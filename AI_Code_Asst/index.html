@@ -1,0 +1,7032 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Prompting techniques, Spec-kit and more">
+      
+      
+        <meta name="author" content="Curious Developer">
+      
+      
+        <link rel="canonical" href="https://amitrajpurkar.github.io/AI_Code_Asst/">
+      
+      
+        <link rel="prev" href="../shelve_20260211/">
+      
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>AI Asst Research - Experiments with AI Code Assistant</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#conversations-google-meet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Experiments with AI Code Assistant" class="md-header__button md-logo" aria-label="Experiments with AI Code Assistant" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7H5a2 2 0 0 0-2 2v8h2v-4h2v4h2V9a2 2 0 0 0-2-2m0 4H5V9h2m7-2h-4v10h2v-4h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2m0 4h-2V9h2m6 0v6h1v2h-4v-2h1V9h-1V7h4v2Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Experiments with AI Code Assistant
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI Asst Research
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/amitrajpurkar/sprboot_api_cktBrkr" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sprboot_api_cktBrkr
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../FirstPlan/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Legacy App Migration
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../First_Analysis/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Migration Work
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../experiment02/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Weather App 1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../experiment03/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Weather App 2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../experiment04/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Q&A App 1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../experiment05/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Q&A App 2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../shelve_20260211/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Journals
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Experiments with AI Code Assistant" class="md-nav__button md-logo" aria-label="Experiments with AI Code Assistant" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7H5a2 2 0 0 0-2 2v8h2v-4h2v4h2V9a2 2 0 0 0-2-2m0 4H5V9h2m7-2h-4v10h2v-4h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2m0 4h-2V9h2m6 0v6h1v2h-4v-2h1V9h-1V7h4v2Z"/></svg>
+
+    </a>
+    Experiments with AI Code Assistant
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/amitrajpurkar/sprboot_api_cktBrkr" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sprboot_api_cktBrkr
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FirstPlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Legacy App Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Migration Work
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Migration Work
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../First_Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First Analysis before starting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_pad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Draft a Plan to work with AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_dialog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interaction Dialog with AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI_Coding_Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PROJECT_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FULLSTACK_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Full Stack Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Migration Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Migration Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/H2_MIGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Database Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/RESILIENCE4J_MIGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resilience4j Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/GRADLE_9_MIGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gradle 9 Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/Upgrade_Plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrade Plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/Upgrade_CircuitBreaker_Plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Circuit Breaker Upgrade
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/Upgrade_H2_Plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Upgrade Plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Migration Status
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Migration Status
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/MIGRATION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migration Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/H2_MIGRATION_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Migration Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/TEST_MIGRATION_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Migration Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PHASE1_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phase 1 Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PHASE3_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phase 3 Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/UPGRADE_PROGRESS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrade Progress
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/UPGRADE_STATUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrade Status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Implementation Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PRODUCT_API_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/FRONTEND_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/DOCKER_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PERFORMANCE_TESTING_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Performance Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/CIRCUIT_BREAKER_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ircuit Breaker Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Test Results
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Test Results
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/FINAL_TEST_RESULTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/FRONTEND_TEST_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PRODUCT_CONTROLLER_TESTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Controller Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/TEST_RESULTS_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Results Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/VALIDATION_TESTS_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code Reviews & Fixes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Code Reviews & Fixes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/code_review_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First response
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/CODE_REVIEW_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Review Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/SENIOR_ARCHITECT_CODE_REVIEW.txt" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Senior Architect Review
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/CRITICAL-002-FIX-SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Critical Fix 002
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/CRITICAL-003-FIX-SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Critical Fix 003
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/h2-quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/frontend-quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/docker-quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/gatling-quick-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gatling Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/RESILIENCE4J_QUICK_START/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resilience4j
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Additional Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/windsurfs_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Old Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/vercel_steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vercel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/ENHANCEMENTS_OCT_2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enhancements Oct 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/ANNOTATION_REFACTORING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotation Refactoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/RESILIENCE4J_IMPLEMENTATION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resilience4j Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/DOCKER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PERFORMANCE_TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Performance Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment01/PENDING_ACTIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pending Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../experiment02/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Weather App 1
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Weather App 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment02/prompt_interaction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment02/FEATURES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../experiment03/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Weather App 2
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Weather App 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment03/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment03/spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Specs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../experiment04/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Q&A App 1
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Q&A App 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment04/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment04/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../experiment05/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Q&A App 2
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Q&A App 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment05/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiment05/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architectures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Journals
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Journals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shelve_20260211/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    asof 2026-02-11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    AI Asst Research
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Asst Research
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conversations-google-meet" class="md-nav__link">
+    <span class="md-ellipsis">
+      conversations: google meet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bin-list-links-related-to-ai-code-assistants" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin list links related to AI Code Assistants..
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deck-for-podcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      deck for podcast..
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changelog-podcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      changelog podcast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-from-chatgpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      more from chatgpt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-first-principle-org-level-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ First Principle (Org-Level View)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1️⃣ First Principle (Org-Level View)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#business-analysts-product-owners" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Business Analysts / Product Owners
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧾 Business Analysts / Product Owners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agentmd-ba-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      AGENT.md (BA Agent)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Net effect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qa-testers" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 QA / Testers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 QA / Testers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agentmd-qa-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      AGENT.md (QA Agent)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-effect_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Net effect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-ux-designers" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎨 UI / UX Designers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 UI / UX Designers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agentmd-ux-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      AGENT.md (UX Agent)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specs_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-effect_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Net effect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-program-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Project / Program Managers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Project / Program Managers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agentmd-pm-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      AGENT.md (PM Agent)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specs_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net-effect_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Net effect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-who-benefits-most-unexpectedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Who Benefits Most (Unexpectedly)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-should-other-roles-use-different-ai-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Should Other Roles Use Different AI Tools?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4️⃣ Should Other Roles Use Different AI Tools?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecturally-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecturally: NO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operationally-sometimes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operationally: SOMETIMES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#same-core-model-different-surfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Same core model, different surfaces:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-changes-at-the-org-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ What Changes at the Org Level
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5️⃣ What Changes at the Org Level">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-role-silos-shared-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      From role silos → shared intent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-the-new-skill-for-non-dev-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ The New Skill for Non-Dev Roles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-org-wide-architecture-conceptual" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ Org-Wide Architecture (Conceptual)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-real-strategic-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      8️⃣ The Real Strategic Answer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-practical-recommendation-for-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      9️⃣ Practical Recommendation for You
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Final Takeaway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 Final Takeaway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-is-where-it-becomes-truly-transformational" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is where it becomes truly transformational.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-are-ai-code-assistants" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 What Are AI Code Assistants?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-major-ai-code-assistants-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      - ## 🛠️ Major AI Code Assistants (2026)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-is-most-feature-rich" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏆 Which Is Most Feature-Rich?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-value-for-price" class="md-nav__link">
+    <span class="md-ellipsis">
+      💸 Best Value for Price
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-open-source-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      🆓 Free &amp; Open-Source Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-picks-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Quick Picks Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-want-i-can-tailor-this-list-to-specific-languages-eg-python-javascript-or-team-vs-solo-developer-scenariosjust-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      If you want, I can tailor this list to specific languages (e.g., Python, JavaScript) or team vs solo developer scenarios—just ask!
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-high-level-purpose-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ High-Level Purpose &amp; Philosophy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-target-audience-usage-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Target Audience &amp; Usage Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-documentation-style-emphasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Documentation Style &amp; Emphasis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-repository-code-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Repository &amp; Code Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-internal-structure-conceptual" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Internal Structure (Conceptual)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5️⃣ Internal Structure (Conceptual)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spec-kit-conceptual-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 spec-kit (Conceptual Layout)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-similarities-side-by-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ Similarities (Side-by-Side)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-key-differences-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ Key Differences (At a Glance)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-architectural-interpretation-software-architect-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      8️⃣ Architectural Interpretation (Software Architect View)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-takeaway_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Final Takeaway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-1-what-is-agentmd-conceptually" class="md-nav__link">
+    <span class="md-ellipsis">
+      - # 1️⃣ What is AGENT.md (Conceptually)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-persistent-context-not-a-task-not-a-spec-not-a-capability" class="md-nav__link">
+    <span class="md-ellipsis">
+      It’s persistent context, not a task, not a spec, not a capability.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="It’s persistent context, not a task, not a spec, not a capability.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typical-contents-of-agentmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical contents of AGENT.md
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-is-agentmd-tool-specific" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Is AGENT.md Tool-Specific?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2️⃣ Is AGENT.md Tool-Specific?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short answer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-no-its-tool-agnostic-in-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      - No — it’s tool-agnostic in principle.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="- No — it’s tool-agnostic in principle.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longer-precise-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Longer, precise answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-where-agentmd-fits-architecturally" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Where AGENT.md Fits Architecturally
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3️⃣ Where AGENT.md Fits Architecturally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-4-how-agentmd-differs-from-speckit" class="md-nav__link">
+    <span class="md-ellipsis">
+      - # 4️⃣ How AGENT.md Differs from SpecKit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="- # 4️⃣ How AGENT.md Differs from SpecKit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analogy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speckit-design-requirements-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      SpecKit = Design &amp; requirements documents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-agentmd-differs-from-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ How AGENT.md Differs from Skills
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5️⃣ How AGENT.md Differs from Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analogy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills-what-you-know-how-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skills = “What you know how to do”
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-all-three-together-clean-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ All Three Together (Clean Mental Model)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-why-agentmd-exists-the-real-reason" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ Why AGENT.md Exists (The Real Reason)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7️⃣ Why AGENT.md Exists (The Real Reason)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimize-for-helpfulness-over-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize for “helpfulness” over safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makes-ai-behavior-reviewable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Makes AI behavior reviewable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-example-snippet-illustrative" class="md-nav__link">
+    <span class="md-ellipsis">
+      8️⃣ Example Snippet (Illustrative)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-comparison-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      9️⃣ Comparison Summary Table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-takeaway_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Final Takeaway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 Final Takeaway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#just-say-where-you-want-to-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      Just say where you want to go.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      -
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-first-principle-non-negotiable" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ First Principle (Non-Negotiable)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-three-skill-pillars-you-must-own" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ The Three Skill Pillars You Must Own
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2️⃣ The Three Skill Pillars You Must Own">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-architectural-thinking-primary-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 1. Architectural Thinking (Primary Skill)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-problem-framing-specification-critical-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✍️ 2. Problem Framing &amp; Specification (Critical Skill)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✍️ 2. Problem Framing &amp; Specification (Critical Skill)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-is-not-writing-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is NOT “writing requirements”
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-code-review-verification-mandatory-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 3. Code Review &amp; Verification (Mandatory Skill)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-skill-mapping-to-agent-specs-and-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Skill Mapping to Agent, Specs, and Skills
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3️⃣ Skill Mapping to Agent, Specs, and Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skill-artifact-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Skill → Artifact Mapping
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-java-full-stack-developer-what-to-double-down-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Java Full-Stack Developer: What to Double Down On
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4️⃣ Java Full-Stack Developer: What to Double Down On">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skills-you-already-likely-have" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Skills You Already Likely Have
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills-you-must-strengthen-now-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔥 Skills You Must Strengthen (Now Critical)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-system-design-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. System Design (Backend)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-api-contract-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. API &amp; Contract Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-security-compliance-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Security &amp; Compliance Thinking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-frontend-state-data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. Frontend State &amp; Data Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-skill-focus-by-role-java-full-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Skill Focus by Role (Java Full-Stack)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5️⃣ Skill Focus by Role (Java Full-Stack)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend-focus-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Focus Areas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-focus-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Focus Areas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-not-to-over-invest-in-anymore" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ What NOT to Over-Invest In Anymore
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-how-agentmd-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      **7️⃣ How Agent.md Changes **
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** Role**
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-how-skills-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      **8️⃣ How Skills Change **
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** Role**
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-practical-skill-checklist-self-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      9️⃣ Practical Skill Checklist (Self-Assessment)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-truth-architect-to-architect" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Final Truth (Architect to Architect)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 Final Truth (Architect to Architect)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#just-tell-me-where-you-want-to-go-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      Just tell me where you want to go next.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-just-say-the-word" class="md-nav__link">
+    <span class="md-ellipsis">
+      - Just say the word.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      **🧠 **
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-whats-the-philosophy-behind-spec-kit-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What’s the Philosophy Behind Spec Kit (GitHub)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      **🧪 **
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-what-is-specflow-microsoft-net-bdd-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What Is SpecFlow (Microsoft / .NET BDD Tool)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      **🔍 **
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-spec-kit-vs-specflow-core-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Spec Kit vs SpecFlow — Core Differences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      **🤖 **
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spec-driven-dev-vs-bdd-with-human-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Spec-Driven Dev vs BDD with Human Developers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Spec-Driven Dev vs BDD with Human Developers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      **📌 **
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-driven-development-with-ai-code-assistants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification-Driven Development (with AI Code Assistants)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      **📊 **
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-summary-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Summary Comparison
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Summary Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#final-thought" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Final Thought
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-want-i-can-provide-a-sample-side-by-side-workflow-demo-or-tangible-examples-of-how-a-simple-feature-would-be-specd-in-each-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      If you want, I can provide a sample side-by-side workflow demo or tangible examples of how a simple feature would be spec’d in each approach!
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-system-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. System Prompt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. System Prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-it-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      What it is
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-user-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. User Prompt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. User Prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-it-is_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What it is
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-key-differences-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Key Differences at a Glance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-how-they-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. How They Work Together
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-why-this-matters-for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why This Matters for Developers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Why This Matters for Developers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-line-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      One-line summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-prompts-define-the-ais-behavior-user-prompts-define-the-ais-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      &gt; System prompts define the AI’s behavior; user prompts define the AI’s task.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      -
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-what-is-a-legacy-software-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is a Legacy Software Application?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-key-factors-qualities-of-a-legacy-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Key Factors / Qualities of a Legacy Application
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Key Factors / Qualities of a Legacy Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b-knowledge-people-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Knowledge &amp; People Factors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-operational-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Operational Characteristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-business-strategic-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. Business &amp; Strategic Factors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-common-misconceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Common Misconceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-typical-scenarios-for-legacy-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Typical Scenarios for Legacy Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Typical Scenarios for Legacy Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-mission-critical-core-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 1: Mission-Critical Core System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-integration-bottleneck" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 2: Integration Bottleneck
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-compliance-pressure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 3: Compliance Pressure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-4-cost-vs-value-tipping-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 4: Cost vs. Value Tipping Point
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-common-approaches-to-handling-legacy-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Common Approaches to Handling Legacy Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Common Approaches to Handling Legacy Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-leave-as-is-encapsulation-keep-the-lights-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Leave As-Is (Encapsulation / “Keep the Lights On”)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-refactor-modernize-incrementally" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Refactor / Modernize Incrementally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-replatform-lift-and-shift-with-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Replatform (Lift-and-Shift with Improvements)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-rewrite-replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Rewrite / Replace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-strangler-fig-pattern-most-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Strangler Fig Pattern (Most Practical)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-decision-framework-quick-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Decision Framework (Quick Guide)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-key-takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Key Takeaway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      -
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<ul>
+<li>Topic and content selection</li>
+<li>Using AI Code Assistant with Legacy application</li>
+</ul>
+<h2 id="conversations-google-meet">conversations: google meet<a class="headerlink" href="#conversations-google-meet" title="Permanent link">&para;</a></h2>
+<ul>
+<li>2025-Nov-12: when dhanesh had tabla exam, with Mohan and xx</li>
+<li>2026-Jan-12: with Mohan, Ankita, xx, Omkar</li>
+<li>2026-Feb-09: with Mohan, Ankita, Kaushik, Omkar</li>
+</ul>
+<h2 id="bin-list-links-related-to-ai-code-assistants">bin list links related to AI Code Assistants..<a class="headerlink" href="#bin-list-links-related-to-ai-code-assistants" title="Permanent link">&para;</a></h2>
+<ul>
+<li>check this as bin list... https://github.com/ruvnet/open-claude-code</li>
+<li>another one.. i tried, couldnt go much ahead.. https://opencode.ai</li>
+<li>https://medium.com/@creativeaininja/complete-beginners-guide-to-claude-code-from-setup-to-your-first-ai-coding-session-57f43119ec62</li>
+<li>https://pypi.org/project/openclaudecode/</li>
+<li>https://code.claude.com/docs/en/overview</li>
+<li>{{video https://www.youtube.com/watch?v=2vfrKCCUVKQ}}</li>
+<li>https://www.geeky-gadgets.com/claude-code-installation-guide/</li>
+<li>https://github.com/kuwa72/everything-windsurf</li>
+<li>https://github.com/affaan-m/everything-claude-code</li>
+<li>https://claudecodeplugins.io/plugins/windsurf-pack/</li>
+</ul>
+<h2 id="deck-for-podcast">deck for podcast..<a class="headerlink" href="#deck-for-podcast" title="Permanent link">&para;</a></h2>
+<ul>
+<li>topic/ theme = how can speckit be applied to legacy application</li>
+<li>demonstrate one application with discussion points</li>
+<li>white-labelled experiment = git@github.com:amitrajpurkar/sprboot_api_cktBrkr.git</li>
+<li>white-label = is the project disjoint or free from Non-disclosures, copy-rights, un-branded, open.. check or add a license to the code.</li>
+<li>page: background / context for the conversation...<ul>
+<li>what is a Legacy Application; its qualities; different ways to address a problem;</li>
+<li>what problem are we trying to address</li>
+</ul>
+</li>
+<li>page: context for AI Code Assistants<ul>
+<li>AI does not replace a task; it augments and helps with automation; work is still done by the developer</li>
+<li>Developer is responsible for the code generated by the AI Assistant based on prompts provided</li>
+<li>Large number of Assistants are available; all are fairly similar; its a developers choice to pick one;  Googles Antigravity is good for hobbyist developers, monthly fees for individual developer is zero; models available are Gemini and Claude only</li>
+</ul>
+</li>
+<li>page: context for SpecKit<ul>
+<li>System prompts/ templates for AI Code Assistants.. many supported by CLI, else configure manually for your code assistant (eg for Antigravity)</li>
+<li>the philosophy -- document the specification, plan, tasks very well before making code changes</li>
+<li>what this means for a developer --</li>
+</ul>
+</li>
+<li>page: later.. Spec driven development vs Behavior driven development</li>
+<li>page: experiment at hand..<ul>
+<li>why legacy? a working application written in 2017 on older tech stack; newer versions of java, gradle not supporting that stack; one of the key libraries is no longer supported today</li>
+<li>problem being solved migrate the application from older stack to the latest stack and libraries so that i can be run on my new machine.<sub>~</sub>~</li>
+<li>how does this experiment compare to what developers typically experience when faced with a legacy application.</li>
+<li>speckit was not used as i was not aware of it at the moment; i used planned prompts and sequence of tiny changes to achive the desired migration</li>
+</ul>
+</li>
+<li>page: on Michael Features book and why its still relevant today.<ul>
+<li>there is no magic pill</li>
+</ul>
+</li>
+<li>page: what are developers doing today<ul>
+<li>thoughtworks</li>
+<li>info-q</li>
+<li>software engineering podcast</li>
+<li>
+<h2 id="changelog-podcast">changelog podcast<a class="headerlink" href="#changelog-podcast" title="Permanent link">&para;</a></h2>
+-</li>
+</ul>
+</li>
+<li>
+<h2 id="more-from-chatgpt">more from chatgpt<a class="headerlink" href="#more-from-chatgpt" title="Permanent link">&para;</a></h2>
+</li>
+<li>Excellent — this gets to the <strong>organizational impact</strong> of these patterns, not just the tooling.</li>
+</ul>
+<p>Short answer:</p>
+<blockquote>
+<p><strong>Agent.md, Specs, and Skills are not developer-only concepts.</strong></p>
+<p>They generalize to <em>any role that works through structured artifacts and repeatable processes.</em></p>
+</blockquote>
+<p>What changes is <strong>what each role puts into them and what they get out.</strong></p>
+<p>Below is a <strong>role-by-role, SDLC-wide view</strong>, from an architecture and operating-model perspective.</p>
+<hr />
+<h1 id="1-first-principle-org-level-view"><strong>1️⃣ First Principle (Org-Level View)</strong><a class="headerlink" href="#1-first-principle-org-level-view" title="Permanent link">&para;</a></h1>
+<p>These artifacts are really about three universal needs:</p>
+<table>
+<thead>
+<tr>
+<th><strong>The Need</strong></th>
+<th><strong>Artifact</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Behavioral governance</td>
+<td>AGENT.md</td>
+</tr>
+<tr>
+<td>Intent &amp; correctness</td>
+<td>Specs (SpecKit-style)</td>
+</tr>
+<tr>
+<td>Execution capability</td>
+<td>Skills</td>
+</tr>
+<tr>
+<td>- Those needs exist in <strong>every SDLC role</strong> — not just dev.</td>
+<td></td>
+</tr>
+<tr>
+<td>- ---</td>
+<td></td>
+</tr>
+<tr>
+<td>- # <strong>2️⃣ Role-by-Role Mapping</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>- ## <strong>🏗️ Architects</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>- ### <strong>How they use them</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>- ### <strong>AGENT.md (Architecture Agent)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>- Enforce architectural principles</td>
+<td></td>
+</tr>
+<tr>
+<td>- Guardrails (layering, tech choices)</td>
+<td></td>
+</tr>
+<tr>
+<td>- ADR (Architecture Decision Record) rules</td>
+<td></td>
+</tr>
+<tr>
+<td>- Non-functional requirements defaults</td>
+<td></td>
+</tr>
+<tr>
+<td>- ### <strong>Specs (Architecture Specs)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>- System context</td>
+<td></td>
+</tr>
+<tr>
+<td>- C4 models</td>
+<td></td>
+</tr>
+<tr>
+<td>- Quality attributes</td>
+<td></td>
+</tr>
+<tr>
+<td>- Integration contracts</td>
+<td></td>
+</tr>
+<tr>
+<td>- ### <strong>Skills (Architecture Skills)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>- Threat modeling</td>
+<td></td>
+</tr>
+<tr>
+<td>- Architecture review</td>
+<td></td>
+</tr>
+<tr>
+<td>- Tradeoff analysis</td>
+<td></td>
+</tr>
+<tr>
+<td>- Cloud cost estimation</td>
+<td></td>
+</tr>
+<tr>
+<td>- ### <strong>Net effect</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Architects shift from:</p>
+<blockquote>
+<p><em>Drawing diagrams</em> → <em>Encoding architectural intent for AI</em></p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h2 id="business-analysts-product-owners"><strong>🧾 Business Analysts / Product Owners</strong><a class="headerlink" href="#business-analysts-product-owners" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="agentmd-ba-agent"><strong>AGENT.md (BA Agent)</strong><a class="headerlink" href="#agentmd-ba-agent" title="Permanent link">&para;</a></h3>
+</li>
+<li>Requirements quality rules</li>
+<li>Avoid ambiguous language</li>
+<li>Enforce acceptance criteria format</li>
+<li>
+<h3 id="specs"><strong>Specs</strong><a class="headerlink" href="#specs" title="Permanent link">&para;</a></h3>
+</li>
+<li>Business requirements</li>
+<li>User journeys</li>
+<li>Business rules</li>
+<li>Edge cases</li>
+<li>
+<h3 id="skills"><strong>Skills</strong><a class="headerlink" href="#skills" title="Permanent link">&para;</a></h3>
+</li>
+<li>User story refinement</li>
+<li>Acceptance criteria generation</li>
+<li>Gap analysis</li>
+<li>Impact analysis</li>
+<li>
+<h3 id="net-effect"><strong>Net effect</strong><a class="headerlink" href="#net-effect" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>They become:</p>
+<blockquote>
+<p><em>Requirement system designers</em>, not just writers</p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h2 id="qa-testers"><strong>🧪 QA / Testers</strong><a class="headerlink" href="#qa-testers" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="agentmd-qa-agent"><strong>AGENT.md (QA Agent)</strong><a class="headerlink" href="#agentmd-qa-agent" title="Permanent link">&para;</a></h3>
+</li>
+<li>Testing philosophy</li>
+<li>Coverage expectations</li>
+<li>Risk-based testing rules</li>
+<li>
+<h3 id="specs_1"><strong>Specs</strong><a class="headerlink" href="#specs_1" title="Permanent link">&para;</a></h3>
+</li>
+<li>Testable acceptance criteria</li>
+<li>Quality gates</li>
+<li>Non-functional test cases</li>
+<li>
+<h3 id="skills_1"><strong>Skills</strong><a class="headerlink" href="#skills_1" title="Permanent link">&para;</a></h3>
+</li>
+<li>Test generation</li>
+<li>Regression suite updates</li>
+<li>Exploratory test ideas</li>
+<li>Performance test scaffolding</li>
+<li>
+<h3 id="net-effect_1"><strong>Net effect</strong><a class="headerlink" href="#net-effect_1" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>QA shifts from:</p>
+<blockquote>
+<p><em>Manual execution</em> → <em>Quality system orchestration</em></p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h2 id="ui-ux-designers"><strong>🎨 UI / UX Designers</strong><a class="headerlink" href="#ui-ux-designers" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="agentmd-ux-agent"><strong>AGENT.md (UX Agent)</strong><a class="headerlink" href="#agentmd-ux-agent" title="Permanent link">&para;</a></h3>
+</li>
+<li>Design system rules</li>
+<li>Accessibility standards</li>
+<li>Interaction principles</li>
+<li>
+<h3 id="specs_2"><strong>Specs</strong><a class="headerlink" href="#specs_2" title="Permanent link">&para;</a></h3>
+</li>
+<li>User flows</li>
+<li>UX acceptance criteria</li>
+<li>Usability constraints</li>
+<li>
+<h3 id="skills_2"><strong>Skills</strong><a class="headerlink" href="#skills_2" title="Permanent link">&para;</a></h3>
+</li>
+<li>Wireframe generation</li>
+<li>Heuristic evaluation</li>
+<li>Accessibility audit</li>
+<li>Copy refinement</li>
+<li>
+<h3 id="net-effect_2"><strong>Net effect</strong><a class="headerlink" href="#net-effect_2" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>Designers become:</p>
+<blockquote>
+<p><em>Design intent curators</em>, not pixel pushers</p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h2 id="project-program-managers"><strong>📋 Project / Program Managers</strong><a class="headerlink" href="#project-program-managers" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="agentmd-pm-agent"><strong>AGENT.md (PM Agent)</strong><a class="headerlink" href="#agentmd-pm-agent" title="Permanent link">&para;</a></h3>
+</li>
+<li>Communication style</li>
+<li>Status format</li>
+<li>Risk escalation rules</li>
+<li>
+<h3 id="specs_3"><strong>Specs</strong><a class="headerlink" href="#specs_3" title="Permanent link">&para;</a></h3>
+</li>
+<li>Milestones</li>
+<li>Dependencies</li>
+<li>Success criteria</li>
+<li>Delivery constraints</li>
+<li>
+<h3 id="skills_3"><strong>Skills</strong><a class="headerlink" href="#skills_3" title="Permanent link">&para;</a></h3>
+</li>
+<li>Status report generation</li>
+<li>Risk analysis</li>
+<li>Capacity planning</li>
+<li>Timeline simulations</li>
+<li>
+<h3 id="net-effect_3"><strong>Net effect</strong><a class="headerlink" href="#net-effect_3" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>PMs become:</p>
+<blockquote>
+<p><em>System operators</em>, not just meeting facilitators</p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h1 id="3-who-benefits-most-unexpectedly"><strong>3️⃣ Who Benefits Most (Unexpectedly)</strong><a class="headerlink" href="#3-who-benefits-most-unexpectedly" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>Ironically, <strong>non-dev roles often benefit more</strong> because:
+- Their work is already text-heavy
+- Their artifacts are ambiguous today
+- AI helps formalize fuzzy intent</p>
+<hr />
+<ul>
+<li>
+<h1 id="4-should-other-roles-use-different-ai-tools"><strong>4️⃣ Should Other Roles Use Different AI Tools?</strong><a class="headerlink" href="#4-should-other-roles-use-different-ai-tools" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h3 id="architecturally-no"><strong>Architecturally: NO</strong><a class="headerlink" href="#architecturally-no" title="Permanent link">&para;</a></h3>
+</li>
+<li>
+<h3 id="operationally-sometimes"><strong>Operationally: SOMETIMES</strong><a class="headerlink" href="#operationally-sometimes" title="Permanent link">&para;</a></h3>
+</li>
+<li>
+<h2 id="same-core-model-different-surfaces">Same core model, different surfaces:<a class="headerlink" href="#same-core-model-different-surfaces" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<table>
+<thead>
+<tr>
+<th><strong>Role</strong></th>
+<th><strong>Same pattern</strong></th>
+<th><strong>Different surface</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dev</td>
+<td>AGENT.md, Specs, Skills</td>
+<td>IDE, repo</td>
+</tr>
+<tr>
+<td>Analyst</td>
+<td>Same</td>
+<td>Jira, Confluence, docs</td>
+</tr>
+<tr>
+<td>QA</td>
+<td>Same</td>
+<td>Test mgmt tools</td>
+</tr>
+<tr>
+<td>UX</td>
+<td>Same</td>
+<td>Figma, design docs</td>
+</tr>
+<tr>
+<td>PM</td>
+<td>Same</td>
+<td>Roadmaps, planning tools</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>The <strong>pattern is universal</strong>.</li>
+<li>The <strong>integration point differs</strong>.</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h1 id="5-what-changes-at-the-org-level"><strong>5️⃣ What Changes at the Org Level</strong><a class="headerlink" href="#5-what-changes-at-the-org-level" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h2 id="from-role-silos-shared-intent"><strong>From role silos → shared intent</strong><a class="headerlink" href="#from-role-silos-shared-intent" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>Instead of:
+- BA writes stories
+- Dev interprets
+- QA guesses
+- PM chases</p>
+<p>You get:</p>
+<blockquote>
+<p>One shared spec → many specialized skills</p>
+</blockquote>
+<p>This reduces:
+- Rework
+- Interpretation drift
+- Role friction</p>
+<hr />
+<ul>
+<li>
+<h1 id="6-the-new-skill-for-non-dev-roles"><strong>6️⃣ The New Skill for Non-Dev Roles</strong><a class="headerlink" href="#6-the-new-skill-for-non-dev-roles" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>They must learn:
+- ### <strong>✍️ Structured intent writing</strong></p>
+<p>Not prose. Not slides.</p>
+<p><strong>Executable intent.</strong></p>
+<p>This is a massive upgrade in capability.</p>
+<hr />
+<ul>
+<li>
+<h1 id="7-org-wide-architecture-conceptual"><strong>7️⃣ Org-Wide Architecture (Conceptual)</strong><a class="headerlink" href="#7-org-wide-architecture-conceptual" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>         ┌───────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>         │ Shared Specs  │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>         │ (Source of    │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>         │  Truth)       │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>         └───────┬───────┘
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                 │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> ┌───────────────┼───────────────┐
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> ▼               ▼               ▼
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Dev Agent       QA Agent        UX Agent
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>(AGENT.md)      (AGENT.md)      (AGENT.md)
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a> │               │               │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Dev Skills      Test Skills     Design Skills
+</span></code></pre></div>
+<hr />
+<ul>
+<li>
+<h1 id="8-the-real-strategic-answer"><strong>8️⃣ The Real Strategic Answer</strong><a class="headerlink" href="#8-the-real-strategic-answer" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<blockquote>
+<p>These tools are not “developer tools.”   They are <strong>organizational operating system primitives.</strong> The companies that win will:
+- Standardize intent
+- Encode behavior
+- Automate execution</p>
+</blockquote>
+<p>Across <em>all</em> roles.</p>
+<hr />
+<ul>
+<li>
+<h1 id="9-practical-recommendation-for-you"><strong>9️⃣ Practical Recommendation for You</strong><a class="headerlink" href="#9-practical-recommendation-for-you" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>Given your architect mindset:</p>
+<p>You should:
+- Champion shared Specs
+- Define role-specific AGENT.md files
+- Curate Skills by role
+- Treat AI as a cross-functional team member</p>
+<hr />
+<ul>
+<li>
+<h1 id="final-takeaway"><strong>🔑 Final Takeaway</strong><a class="headerlink" href="#final-takeaway" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>If only developers use these patterns:</p>
+<p>❌ You get faster coding</p>
+<p>❌ You keep broken SDLC</p>
+<p>If <em>everyone</em> uses them:</p>
+<p>✅ You get faster alignment</p>
+<p>✅ You get fewer defects</p>
+<p>✅ You get systemic leverage</p>
+<hr />
+<p>If you want, I can next:
+- Propose a <strong>multi-role AI operating model</strong>
+- Show sample <strong>AGENT.md for QA, BA, UX</strong>
+- Design a <strong>governance structure for shared specs</strong>
+- Map this to <strong>SAFe / Scrum / traditional SDLC</strong></p>
+<h2 id="this-is-where-it-becomes-truly-transformational">This is where it becomes truly transformational.<a class="headerlink" href="#this-is-where-it-becomes-truly-transformational" title="Permanent link">&para;</a></h2>
+<p>-
+- Here’s a comprehensive overview of the <strong>AI Code Assistants</strong> available as of early 2026, including <strong>feature summaries, pricing tiers, free/open-source options</strong>, and which tools are widely regarded as most <em>feature-rich</em> or <em>best value for money</em>.  </p>
+<hr />
+<ul>
+<li>
+<h2 id="what-are-ai-code-assistants"><strong>💡 What Are AI Code Assistants?</strong><a class="headerlink" href="#what-are-ai-code-assistants" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>AI Code Assistants are tools that help developers write, refactor, debug, and understand code using large language models or specialized inference engines. They integrate with IDEs, web IDEs, editors, or terminals to provide suggestions, auto-completions, explanations, and more.  </p>
+<hr />
+<h2 id="-major-ai-code-assistants-2026">- ## <strong>🛠️ Major AI Code Assistants (2026)</strong><a class="headerlink" href="#-major-ai-code-assistants-2026" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th><strong>Tool</strong></th>
+<th><strong>Core Strengths</strong></th>
+<th><strong>IDE/Environment</strong></th>
+<th><strong>Pricing / Free Option</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>Strong context-aware suggestions; multi-language</td>
+<td>VS Code, JetBrains, Neovim, etc.</td>
+<td>Free tier (2 k completions/month); $10/mo Pro; higher tiers</td>
+<td>Mature &amp; widely used. </td>
+</tr>
+<tr>
+<td><strong>Amazon CodeWhisperer (AWS)</strong></td>
+<td>AWS-centric completions + security scanning</td>
+<td>VS Code, JetBrains, AWS IDEs</td>
+<td>Free tier (+ paid for advanced)</td>
+<td>Great for AWS stacks. </td>
+</tr>
+<tr>
+<td><strong>Tabnine</strong></td>
+<td>Privacy options + on-premise models</td>
+<td>Major editors (VS Code, JetBrains, Vim, etc.)</td>
+<td>Free/basic + paid tiers</td>
+<td>Good for teams with privacy needs. </td>
+</tr>
+<tr>
+<td><strong>Codeium</strong></td>
+<td>Unlimited free code suggestions</td>
+<td>VS Code, JetBrains, Vim, Emacs</td>
+<td>Free (unlimited) + paid</td>
+<td>Excellent free option. </td>
+</tr>
+<tr>
+<td><strong>Cursor</strong></td>
+<td>AI-native editor + deep codebase context</td>
+<td>Cursor IDE, VS Code</td>
+<td>Paid with limited free/trial</td>
+<td>Strong for large project understanding. </td>
+</tr>
+<tr>
+<td><strong>JetBrains AI Assistant</strong></td>
+<td>Deep integration across JetBrains IDEs</td>
+<td>IntelliJ, PyCharm, etc.</td>
+<td>Included/paid depending on plan</td>
+<td>Great if you’re in the JetBrains ecosystem. </td>
+</tr>
+<tr>
+<td><strong>Replit Ghostwriter</strong></td>
+<td>Browser-based cloud coding support</td>
+<td>Replit Web IDE</td>
+<td>Paid</td>
+<td>Good for learning/collab. </td>
+</tr>
+<tr>
+<td><strong>Claude Code (Anthropic)</strong></td>
+<td>Code review, explanation, refactor help</td>
+<td>Web, IDE plugins / APIs</td>
+<td>Paid/usage-based</td>
+<td>Excelling in reasoning &amp; explanations. </td>
+</tr>
+<tr>
+<td><strong>Windsurf AI</strong></td>
+<td>Autonomous coding &amp; project tasks</td>
+<td>VS Code, CLI</td>
+<td>~$15/mo</td>
+<td>Good bang-for-buck paid option. </td>
+</tr>
+<tr>
+<td><strong>Cody (Sourcegraph)</strong></td>
+<td>Large-repo awareness &amp; knowledge search</td>
+<td>IDE/Sourcegraph</td>
+<td>Free tier + paid</td>
+<td>Enterprise focus. </td>
+</tr>
+<tr>
+<td><strong>Continue / Aider (Open-Source)</strong></td>
+<td>Fully self-hosted, customizable</td>
+<td>CLI, VS Code</td>
+<td>Free/Open-Source</td>
+<td>Privacy-first and low-cost. </td>
+</tr>
+<tr>
+<td><strong>Open-Source Models (e.g., CodeT5, Magicoder, h2oGPT)</strong></td>
+<td>Research-oriented code generation</td>
+<td>Varies (Notebook/Local)</td>
+<td>Free/Open-Source</td>
+<td>Best for experimentation. </td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h2 id="which-is-most-feature-rich"><strong>🏆 Which Is Most Feature-Rich?</strong><a class="headerlink" href="#which-is-most-feature-rich" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p><strong>GitHub Copilot</strong> is often seen as <em>feature-rich</em> because of its:
+- Deep contextual suggestions
+- Multi-language support
+- Seamless editor integrations and extensions
+- Chat, pair-programming style assistance
+- Multiple pricing tiers for individuals and enterprises  </p>
+<p>Other contenders with strong capabilities include <strong>Cursor</strong> (for deep codebase editing) and <strong>Claude Code</strong> (for explanation, refactoring, and review tasks).  </p>
+<hr />
+<ul>
+<li>
+<h2 id="best-value-for-price"><strong>💸 Best Value for Price</strong><a class="headerlink" href="#best-value-for-price" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>Value depends on what you need:</p>
+<p><strong>Best general everyday value</strong></p>
+<p>✔ <strong>GitHub Copilot Individual (~$10/mo)</strong> — great all-around tool for most developers.  </p>
+<p><strong>Best free or budget pick</strong></p>
+<p>✔ <strong>Codeium (free unlimited)</strong> — surprisingly capable for zero cost.  </p>
+<p>✔ <strong>GitHub Copilot free tier</strong> — limited monthly completions but branded quality.  </p>
+<p>✔ <strong>Amazon CodeWhisperer free tier</strong> — free AWS-optimized assistance.  </p>
+<p><strong>Best for privacy / self-hosting</strong></p>
+<p>✔ <strong>Tabnine</strong> with on-premise models (paid) or <strong>Continue / Aider</strong> open-source.  </p>
+<p><strong>Best for enterprise teams</strong></p>
+<p>✔ <strong>Cody (Sourcegraph)</strong> and Copilot Enterprise offer advanced governance and scale.  </p>
+<hr />
+<ul>
+<li>
+<h2 id="free-open-source-options"><strong>🆓 Free &amp; Open-Source Options</strong><a class="headerlink" href="#free-open-source-options" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p><strong>Free / free-tier options:</strong>
+- <strong>Codeium</strong> — unlimited free suggestions.
+- <strong>GitHub Copilot Free</strong> — limited completions per month.
+- <strong>Amazon CodeWhisperer Free</strong> — basic AWS code assist.
+- <strong>Google Gemini Code Assist (free plan)</strong> — generous free limits.  </p>
+<p><strong>Open-Source projects:</strong>
+- <strong>Continue / Aider</strong> — open-source assistants you can self-host.
+- <strong>Open models like CodeT5, Magicoder, h2oGPT</strong> — foundational code AI engines that can power custom assistants.  </p>
+<hr />
+<ul>
+<li>
+<h2 id="quick-picks-summary"><strong>🧠 Quick Picks Summary</strong><a class="headerlink" href="#quick-picks-summary" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>🚀 ****Goal</strong></th>
+<th><strong>🧠 ****Best Tool</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Best all-around</td>
+<td>GitHub Copilot</td>
+</tr>
+<tr>
+<td>Best free</td>
+<td>Codeium / Copilot Free</td>
+</tr>
+<tr>
+<td>Best for AWS</td>
+<td>Amazon CodeWhisperer</td>
+</tr>
+<tr>
+<td>Best privacy</td>
+<td>Tabnine or Continue (OSS)</td>
+</tr>
+<tr>
+<td>Best deep codebase</td>
+<td>Cursor</td>
+</tr>
+<tr>
+<td>Best research OSS models</td>
+<td>CodeT5 / Magicoder / h2oGPT</td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>- ---</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-you-want-i-can-tailor-this-list-to-specific-languages-eg-python-javascript-or-team-vs-solo-developer-scenariosjust-ask">If you want, I can tailor this list to <em>specific languages</em> (e.g., Python, JavaScript) or <em>team vs solo developer scenarios</em>—just ask!<a class="headerlink" href="#if-you-want-i-can-tailor-this-list-to-specific-languages-eg-python-javascript-or-team-vs-solo-developer-scenariosjust-ask" title="Permanent link">&para;</a></h2>
+<p>-
+- using poe tool..
+-
+- Here's a breakdown of AI tools that can be leveraged by Analysts, UI/UX Designers, QA Engineers, and Project Managers, along with automation scenarios for each role:
+- ### 1.  <strong>Business Analysts</strong>
+- <strong>AI Tools</strong>:
+    - <strong>Tableau</strong>: For data visualization and analysis.
+    - <strong>Power BI</strong>: For business intelligence and report generation.
+    - <strong>Lucidchart</strong>: For creating flowcharts and diagrams.
+    -
+- <strong>Automation Scenarios</strong>:
+    - Automated generation of reports based on real-time data insights.
+    - AI-driven analytics that identify trends and anomalies in business metrics.
+    - Automated documentation of requirements using AI-driven tools (e.g., requirements extraction from stakeholder interviews).
+- ### 2.  <strong>UI/UX Designers</strong></p>
+<p><strong>AI Tools</strong>:
+- <strong>Adobe XD with AI features</strong>: For design and prototyping.
+- <strong>Figma with Plugins</strong>: For collaborative design with AI-enhanced capabilities to suggest design improvements.
+- <strong>Sketch2Code by Microsoft</strong>: Converts hand-drawn designs into working HTML prototypes.</p>
+<p><strong>Automation Scenarios</strong>:
+- AI suggestions for design improvements based on user interaction data.
+- Auto-generating design components and layout adjustments based on user feedback and analytics.
+- Using AI for creating user personas and journey maps based on behavioral data.
+- ### 3.  <strong>Quality Assurance (QA) Engineers</strong></p>
+<p><strong>AI Tools</strong>:
+- <strong>Test.ai</strong>: For automated testing with AI-driven insights.
+- <strong>Applitools</strong>: For visual testing and validation.
+- <strong>Selenium with AI Enhancements</strong>: Adds intelligent automation capabilities to traditional Selenium scripts.</p>
+<p><strong>Automation Scenarios</strong>:
+- Automated bug detection using AI algorithms that analyze code changes and user interactions.
+- Generating and executing test cases automatically based on user workflows.
+- AI-driven prioritization of test cases based on risk assessment and historical data.
+- ### 4.  <strong>Project Managers</strong></p>
+<p><strong>AI Tools</strong>:
+- <strong>Microsoft Project with AI Features</strong>: For project planning and tracking.
+- <strong>Monday.com</strong>: Offers AI features for workload management and project insights.
+- <strong>Smartsheet with AI Capabilities</strong>: For automated reporting and resource management.</p>
+<p><strong>Automation Scenarios</strong>:
+- Automated risk assessment and mitigation suggestions based on project data.
+- Predictive analytics for project timelines and resource allocation.
+- Automatic generation of status reports and meeting notes using AI tools that analyze project progress.
+- ### Summary
+- Each role can leverage AI tools to automate repetitive tasks, gain insights from data, enhance decision-making, and improve efficiency across various stages of the software development lifecycle. By integrating these tools, professionals can focus more on strategic aspects of their work while letting AI handle routine processes.
+-
+- using chatgpt's help..
+-
+- 9️⃣ Mental Model (Architect’s Shortcut)
+    - spec-kit = <strong>“what good looks like”</strong>
+    - skills = <strong>“how good work is done”</strong>
+-</p>
+<hr />
+<ul>
+<li>
+<h2 id="1-high-level-purpose-philosophy"><strong>1️⃣ High-Level Purpose &amp; Philosophy</strong><a class="headerlink" href="#1-high-level-purpose-philosophy" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Dimension</strong></th>
+<th><strong>GitHub spec-kit</strong></th>
+<th><strong>Anthropic skills</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary goal</td>
+<td>Enable <strong>spec-driven software development</strong> with AI assistance</td>
+<td>Extend an AI agent (Claude) with <strong>modular, reusable capabilities</strong></td>
+</tr>
+<tr>
+<td>Core philosophy</td>
+<td><em>“Specs are the source of truth”</em> → code follows specs</td>
+<td><em>“Teach the agent how to do things”</em> via skills</td>
+</tr>
+<tr>
+<td>Level of abstraction</td>
+<td><strong>Project / system lifecycle</strong></td>
+<td><strong>Task / capability level</strong></td>
+</tr>
+<tr>
+<td>View of AI</td>
+<td>AI as a <strong>co-developer</strong> guided by structured specs</td>
+<td>AI as an <strong>agent</strong> enhanced by learned skills</td>
+</tr>
+<tr>
+<td>Intended outcome</td>
+<td>More predictable, disciplined AI-assisted coding</td>
+<td>Smarter, context-aware agent behavior</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="2-target-audience-usage-context"><strong>2️⃣ Target Audience &amp; Usage Context</strong><a class="headerlink" href="#2-target-audience-usage-context" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>GitHub ****spec-kit</strong></th>
+<th><strong>Anthropic ****skills</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary users</td>
+<td>Software engineers, architects, teams</td>
+<td>AI power users, agent designers, Claude users</td>
+</tr>
+<tr>
+<td>Typical usage</td>
+<td>Designing &amp; building software projects</td>
+<td>Performing specialized tasks via an AI agent</td>
+</tr>
+<tr>
+<td>Used during</td>
+<td><strong>Design → planning → implementation</strong></td>
+<td><strong>Runtime / interaction time</strong></td>
+</tr>
+<tr>
+<td>Tool ecosystem</td>
+<td>Copilot, Claude Code, general AI coding assistants</td>
+<td>Claude / Claude Code ecosystem</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="3-documentation-style-emphasis"><strong>3️⃣ Documentation Style &amp; Emphasis</strong><a class="headerlink" href="#3-documentation-style-emphasis" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Dimension</strong></th>
+<th><strong>spec-kit</strong></th>
+<th><strong>skills</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentation focus</td>
+<td>Workflow, methodology, process</td>
+<td>Definition and usage of individual skills</td>
+</tr>
+<tr>
+<td>Prescriptiveness</td>
+<td><strong>High</strong> – defines how development should flow</td>
+<td><strong>Low–medium</strong> – describes what each skill does</td>
+</tr>
+<tr>
+<td>Learning curve</td>
+<td>Higher (new workflow &amp; mindset)</td>
+<td>Lower (skills are self-contained)</td>
+</tr>
+<tr>
+<td>Docs tone</td>
+<td>Engineering-process oriented</td>
+<td>Agent-capability oriented</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="4-repository-code-structure"><strong>4️⃣ Repository &amp; Code Structure</strong><a class="headerlink" href="#4-repository-code-structure" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>GitHub ****spec-kit</strong></th>
+<th><strong>Anthropic ****skills</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repo nature</td>
+<td><strong>Tooling repository</strong></td>
+<td><strong>Content / capability repository</strong></td>
+</tr>
+<tr>
+<td>Primary artifacts</td>
+<td>CLI code + templates + docs</td>
+<td>Skill definitions (Markdown-centric)</td>
+</tr>
+<tr>
+<td>Main languages</td>
+<td>Python + Markdown</td>
+<td>Markdown (plus occasional scripts)</td>
+</tr>
+<tr>
+<td>Execution model</td>
+<td>Developer runs CLI tools</td>
+<td>AI agent consumes skills automatically</td>
+</tr>
+<tr>
+<td>Coupling between modules</td>
+<td>Tightly coupled workflow phases</td>
+<td>Loosely coupled, independent skills</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="5-internal-structure-conceptual"><strong>5️⃣ Internal Structure (Conceptual)</strong><a class="headerlink" href="#5-internal-structure-conceptual" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="spec-kit-conceptual-layout"><strong>🧾 spec-kit (Conceptual Layout)</strong><a class="headerlink" href="#spec-kit-conceptual-layout" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Layer</strong></th>
+<th><strong>Responsibility</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Specs</td>
+<td>Problem definition, constraints, acceptance criteria</td>
+</tr>
+<tr>
+<td>Plans</td>
+<td>Technical approach derived from specs</td>
+</tr>
+<tr>
+<td>Tasks</td>
+<td>Actionable steps for humans or AI</td>
+</tr>
+<tr>
+<td>Tooling</td>
+<td>CLI to generate, manage, and enforce structure</td>
+</tr>
+<tr>
+<td>- ### <strong>🤖 skills (Conceptual Layout)</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Layer</strong></th>
+<th><strong>Responsibility</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill definition</td>
+<td>What the agent can do</td>
+</tr>
+<tr>
+<td>Instructions</td>
+<td>How the agent should behave</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>When and why to use the skill</td>
+</tr>
+<tr>
+<td>Optional assets</td>
+<td>Scripts, examples, templates</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="6-similarities-side-by-side"><strong>6️⃣ Similarities (Side-by-Side)</strong><a class="headerlink" href="#6-similarities-side-by-side" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Common Trait</strong></th>
+<th><strong>How it shows up</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI-first design</td>
+<td>Both assume AI is central to the workflow</td>
+</tr>
+<tr>
+<td>Markdown-based</td>
+<td>Specs and skills are human-readable, versionable</td>
+</tr>
+<tr>
+<td>Structure over prompting</td>
+<td>Move away from ad-hoc prompts</td>
+</tr>
+<tr>
+<td>Reusability</td>
+<td>Specs and skills are meant to be reused</td>
+</tr>
+<tr>
+<td>Open-source experimentation</td>
+<td>Both explore “next-gen” dev/agent patterns</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="7-key-differences-at-a-glance"><strong>7️⃣ Key Differences (At a Glance)</strong><a class="headerlink" href="#7-key-differences-at-a-glance" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Dimension</strong></th>
+<th><strong>spec-kit</strong></th>
+<th><strong>skills</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Drives <em>what</em></td>
+<td>The <strong>entire software project</strong></td>
+<td>A <strong>specific task or behavior</strong></td>
+</tr>
+<tr>
+<td>Drives <em>when</em></td>
+<td>Before and during development</td>
+<td>During agent execution</td>
+</tr>
+<tr>
+<td>Primary artifact</td>
+<td>Specification documents</td>
+<td>Skill definitions</td>
+</tr>
+<tr>
+<td>Enforces workflow</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Agent autonomy</td>
+<td>Constrained by specs</td>
+<td>Expanded by skills</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="8-architectural-interpretation-software-architect-view"><strong>8️⃣ Architectural Interpretation (Software Architect View)</strong><a class="headerlink" href="#8-architectural-interpretation-software-architect-view" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Question</strong></th>
+<th><strong>spec-kit answer</strong></th>
+<th><strong>skills answer</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“How do we build software with AI?”</td>
+<td>Use specs to constrain and guide AI</td>
+<td>Give AI better tools and instructions</td>
+</tr>
+<tr>
+<td>“Where is control?”</td>
+<td>Human-defined specs</td>
+<td>Skill author’s instructions</td>
+</tr>
+<tr>
+<td>“Where is flexibility?”</td>
+<td>Lower, by design</td>
+<td>Higher, by design</td>
+</tr>
+<tr>
+<td>“Risk mitigated?”</td>
+<td>Scope creep, hallucinations, ambiguity</td>
+<td>Lack of domain knowledge</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>
+<h2 id="final-takeaway_1"><strong>🧠 Final Takeaway</strong><a class="headerlink" href="#final-takeaway_1" title="Permanent link">&para;</a></h2>
+</li>
+<li><strong>spec-kit</strong> is a <strong>process framework</strong> for AI-assisted software engineering</li>
+<li><strong>skills</strong> is a <strong>capability framework</strong> for AI agents</li>
+</ul>
+<p>They are <strong>not competitors</strong> — they operate at <strong>different architectural layers</strong> and could even <strong>complement each other</strong>:</p>
+<blockquote>
+<p><em>spec-kit defines what should be built; skills define what the AI knows how to do.</em></p>
+</blockquote>
+<p>If you want, next we can:
+- Map these to <strong>BDD / SDD / Agentic workflows</strong>
+- Show how <strong>spec-kit + skills could work together</strong>
+- Or compare them with <strong>SpecFlow, LangChain, AutoGPT-style agents</strong>
+-
+-
+- 1️⃣ The Core Idea (One-Line)
+    - spec-kit governs what should be built and why;
+    - skills govern how the AI performs specific actions.
+    - Think of spec-kit as the contract and skills as the toolbox.
+-
+- responsibility split
+- |<strong>Layer</strong> |<strong>Tool</strong> |<strong>Responsibility</strong> |
+  |---- |---- |---- |
+  |Product intent |spec-kit |Define goals, constraints, acceptance criteria|
+  | System design| spec-kit| Architecture, tradeoffs, non-functionals|
+  | Task decomposition| spec-kit| Break work into bounded tasks|
+  | Task execution| skills| Execute domain-specific actions|
+  | AI behavior| skills| Ensure consistent, repeatable agent behavior|
+-
+- ┌───────────────────────────┐
+  │   Product Requirements                                                            │
+  │   (Markdown Specs)                                                                   │  ← spec-kit
+  └─────────────┬─────────────┘
+                                                      │
+  ┌─────────────▼─────────────┐
+  │   Technical Plan                                                                         │  ← spec-kit
+  │   Architecture &amp; Tasks                                                               │
+  └─────────────┬─────────────┘
+                                                      │
+  ┌─────────────▼─────────────┐
+  │   Task Dispatcher                                                                      │
+  │   (Human or Agent)                                                                   │
+  └─────────────┬─────────────┘
+                                                      │
+                     ┌────────▼────────┐
+                     │  Skill Selection                                     │
+                     │  (Claude)                                               │
+                     └───────┬─────────┘
+                                                   │
+              ┌─────────▼─────────┐
+              │   Skill Modules                                             │  ← Anthropic skills
+              │   (Testing, Docs,                                           │
+              │    Refactor, etc.)                                           │
+              └─────────┬─────────┘
+                                                   │
+  ┌────────────▼────────────┐
+  │  Code / Docs / Artifacts                                                     │
+  └─────────────────────────┘
+-
+- define the specs.. generate plan and tasks... these steps using speckit
+- at this point, tasks are narrow, verifiable, can be assigned to human or AI agent
+- now map tasks to skills
+-
+-
+- ### Task → Skill Mapping
+- | <strong>Task (from spec-kit)</strong>| <strong>Selected Skill</strong>|
+  | ---- | ---- | 
+  | Design auth flow| system-design-review skill|
+  | Implement JWT| secure-backend-code skill|
+  | Write unit tests| test-generation skill|
+  | Update docs| technical-doc-writer skill|
+-
+- ### division of control
+- | <strong>Concern</strong>| <strong>spec-kit</strong>| <strong>skills</strong>|
+  | ---- | ---- | ---- |
+  | Scope control| ✅| ❌|
+  | Architectural consistency| ✅| ⚠️|
+  | Task quality| ⚠️| ✅|
+  | Behavioral consistency| ❌| ✅|
+  | Governance &amp; review| ✅| ❌|
+- Together → <strong>controlled autonomy</strong>.
+-
+-
+- including AGENT.md
+-
+- 3️⃣ Where AGENT.md Fits Architecturally
+    - Here’s the key insight:
+        - AGENT.md defines how the AI behaves
+        - Specs define what is being built
+        - Skills define what the AI can do
+    - Different axes.
+-
+-
+- Great question. <strong>AGENT.md sits right at the intersection of “prompting” and “architecture”</strong>, and it’s easy to confuse it with SpecKit or Skills because all three are Markdown and AI-facing — but they serve <em>very different roles</em>.</p>
+<p>Let’s break this down cleanly, from first principles, then compare.</p>
+<hr />
+<h2 id="-1-what-is-agentmd-conceptually">- # <strong>1️⃣ What is  AGENT.md  (Conceptually)?</strong><a class="headerlink" href="#-1-what-is-agentmd-conceptually" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>AGENT.md is an agent behavior contract</strong>.</li>
+<li>It tells an AI coding assistant:</li>
+</ul>
+<blockquote>
+<p><em>“When you operate inside this repository, this is who you are, how you behave, and what rules you must follow.”</em></p>
+</blockquote>
+<h2 id="its-persistent-context-not-a-task-not-a-spec-not-a-capability">It’s <strong>persistent context</strong>, not a task, not a spec, not a capability.<a class="headerlink" href="#its-persistent-context-not-a-task-not-a-spec-not-a-capability" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<h3 id="typical-contents-of-agentmd"><strong>Typical contents of  AGENT.md</strong><a class="headerlink" href="#typical-contents-of-agentmd" title="Permanent link">&para;</a></h3>
+</li>
+<li>Coding standards and style rules</li>
+<li>Architectural boundaries</li>
+<li>What <em>not</em> to touch</li>
+<li>Review expectations</li>
+<li>How to interact with humans</li>
+<li>How to interpret ambiguity</li>
+<li>Safety or compliance constraints</li>
+</ul>
+<p>Think of it as a <strong>repo-local system prompt</strong>.</p>
+<hr />
+<ul>
+<li>
+<h1 id="2-is-agentmd-tool-specific"><strong>2️⃣ Is  AGENT.md  Tool-Specific?</strong><a class="headerlink" href="#2-is-agentmd-tool-specific" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h3 id="short-answer"><strong>Short answer</strong><a class="headerlink" href="#short-answer" title="Permanent link">&para;</a></h3>
+<h2 id="-no-its-tool-agnostic-in-principle">- <strong>No — it’s tool-agnostic in principle.</strong><a class="headerlink" href="#-no-its-tool-agnostic-in-principle" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="longer-precise-answer"><strong>Longer, precise answer</strong><a class="headerlink" href="#longer-precise-answer" title="Permanent link">&para;</a></h3>
+<p>-</p>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Reality</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Markdown format</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Concept</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Automatic support</td>
+<td>Tool-dependent</td>
+</tr>
+<tr>
+<td>Manual inclusion</td>
+<td>Always possible</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>Some tools <strong>explicitly recognize</strong> AGENT.md (or similar files):
+- Claude Code
+- Cursor
+- Windsurf / Cascade
+- Copilot Workspace (emerging patterns)
+-
+- Others don’t <em>natively</em> read it — but you can:
+- Paste it into system context
+- Reference it explicitly in prompts
+- Load it via tooling scripts
+-
+- So <strong>the pattern is portable</strong>, even if the automation varies.</p>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h1 id="3-where-agentmd-fits-architecturally"><strong>3️⃣ Where  AGENT.md  Fits Architecturally</strong><a class="headerlink" href="#3-where-agentmd-fits-architecturally" title="Permanent link">&para;</a></h1>
+</li>
+<li>Here’s the key insight:<ul>
+<li><strong>AGENT.md defines how the AI behaves</strong></li>
+<li><strong>Specs define what is being built</strong></li>
+<li><strong>Skills define what the AI can do</strong></li>
+</ul>
+</li>
+<li>Different axes.</li>
+</ul>
+<hr />
+<h2 id="-4-how-agentmd-differs-from-speckit">- # <strong>4️⃣ How  AGENT.md   Differs from SpecKit</strong><a class="headerlink" href="#-4-how-agentmd-differs-from-speckit" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th><strong>Dimension</strong></th>
+<th><strong>AGENT.md</strong></th>
+<th><strong>SpecKit</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary purpose</td>
+<td>Control agent behavior</td>
+<td>Control development process</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Entire repo</td>
+<td>Individual feature / system</td>
+</tr>
+<tr>
+<td>Temporal role</td>
+<td>Always-on</td>
+<td>Lifecycle-based</td>
+</tr>
+<tr>
+<td>Changes often?</td>
+<td>Rarely</td>
+<td>Frequently</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>AI agent</td>
+<td>Humans + AI</td>
+</tr>
+<tr>
+<td>Enforces</td>
+<td>Style, rules, discipline</td>
+<td>Scope, intent, acceptance</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h3 id="analogy"><strong>Analogy</strong><a class="headerlink" href="#analogy" title="Permanent link">&para;</a></h3>
+<ul>
+<li>AGENT.md = <strong>Engineering handbook</strong></li>
+<li>
+<h2 id="speckit-design-requirements-documents">SpecKit = <strong>Design &amp; requirements documents</strong><a class="headerlink" href="#speckit-design-requirements-documents" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<hr />
+</li>
+<li>
+<h1 id="5-how-agentmd-differs-from-skills"><strong>5️⃣ How  AGENT.md  Differs from Skills</strong><a class="headerlink" href="#5-how-agentmd-differs-from-skills" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<table>
+<thead>
+<tr>
+<th><strong>Dimension</strong></th>
+<th><strong>AGENT.md</strong></th>
+<th><strong>Skills</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Defines behavior?</td>
+<td>✅ Yes</td>
+<td>⚠️ Indirect</td>
+</tr>
+<tr>
+<td>Adds new capabilities?</td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td>Executable logic</td>
+<td>❌</td>
+<td>Sometimes</td>
+</tr>
+<tr>
+<td>Reusable across repos</td>
+<td>⚠️ Usually repo-specific</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td>Invoked on demand</td>
+<td>❌ Always active</td>
+<td>✅ Yes</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h3 id="analogy_1"><strong>Analogy</strong><a class="headerlink" href="#analogy_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>AGENT.md = <em>“How you must act”</em></li>
+<li>
+<h2 id="skills-what-you-know-how-to-do">Skills = <em>“What you know how to do”</em><a class="headerlink" href="#skills-what-you-know-how-to-do" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h1 id="6-all-three-together-clean-mental-model"><strong>6️⃣ All Three Together (Clean Mental Model)</strong><a class="headerlink" href="#6-all-three-together-clean-mental-model" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│ AGENT.md                    │
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│ (Behavior &amp; rules)          │
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  • coding style             │
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│  • boundaries               │
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  • safety                   │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>└─────────────┬───────────────┘
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>              │ applies globally
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>┌─────────────▼───────────────┐
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│ SpecKit                     │
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│ (Intent &amp; correctness)      │
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  • requirements             │
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│  • acceptance criteria      │
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│  • architecture             │
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>└─────────────┬───────────────┘
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>              │ drives tasks
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>┌─────────────▼───────────────┐
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│ Skills                      │
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│ (Execution capability)      │
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│  • testing                  │
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│  • refactoring              │
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>│  • docs                     │
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>└─────────────────────────────┘
+</span></code></pre></div>
+<p>Each solves a <strong>different failure mode</strong> of AI coding.</p>
+<hr />
+<ul>
+<li>
+<h1 id="7-why-agentmd-exists-the-real-reason"><strong>7️⃣ Why  AGENT.md  Exists (The Real Reason)</strong><a class="headerlink" href="#7-why-agentmd-exists-the-real-reason" title="Permanent link">&para;</a></h1>
+</li>
+<li>Without AGENT.md, AI assistants tend to:<ul>
+<li>Overstep architectural boundaries</li>
+<li>Rewrite too much</li>
+<li>Ignore repo-specific conventions</li>
+<li>
+<h2 id="optimize-for-helpfulness-over-safety">Optimize for “helpfulness” over safety<a class="headerlink" href="#optimize-for-helpfulness-over-safety" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+</li>
+<li>AGENT.md:<ul>
+<li>Narrows freedom</li>
+<li>Increases predictability</li>
+<li>
+<h2 id="makes-ai-behavior-reviewable">Makes AI behavior <em>reviewable</em><a class="headerlink" href="#makes-ai-behavior-reviewable" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+</li>
+<li>It’s <strong>governance</strong>, not creativity.</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h1 id="8-example-snippet-illustrative"><strong>8️⃣ Example Snippet (Illustrative)</strong><a class="headerlink" href="#8-example-snippet-illustrative" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a># AGENT.md
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>## Role
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>You are a senior backend engineer working in this repository.
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>## Boundaries
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>- Do not modify database schema without explicit approval
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>- Do not introduce new dependencies
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>## Coding Standards
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>- Follow existing patterns exactly
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>- Prefer explicit code over abstractions
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>## Interaction Rules
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>- Ask before refactoring
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>- Explain tradeoffs briefly
+</span></code></pre></div>
+<p>This is <strong>not</strong> a spec.</p>
+<p>This is <strong>not</strong> a skill.</p>
+<p>This is <strong>how the AI thinks and acts</strong>.</p>
+<hr />
+<ul>
+<li>
+<h1 id="9-comparison-summary-table"><strong>9️⃣ Comparison Summary Table</strong><a class="headerlink" href="#9-comparison-summary-table" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<table>
+<thead>
+<tr>
+<th><strong>Artifact</strong></th>
+<th><strong>Controls</strong></th>
+<th><strong>Applies to</strong></th>
+<th><strong>Lifespan</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGENT.md</td>
+<td>Behavior &amp; discipline</td>
+<td>AI agent</td>
+<td>Long-lived</td>
+</tr>
+<tr>
+<td>SpecKit</td>
+<td>Intent &amp; correctness</td>
+<td>Features / systems</td>
+<td>Per change</td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>Capability &amp; execution</td>
+<td>Tasks</td>
+<td>Reusable</td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h1 id="final-takeaway_2"><strong>🔑 Final Takeaway</strong><a class="headerlink" href="#final-takeaway_2" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<blockquote>
+<p><strong>AGENT.md is the constitution.</strong></p>
+<p><strong>Specs are the laws.</strong></p>
+<p><strong>Skills are the tools.</strong></p>
+</blockquote>
+<p>They’re complementary — not redundant.</p>
+<p>If you want, next we can:
+- Design a <strong>production-grade ****AGENT.md**</strong> template**
+- Show <strong>anti-patterns</strong> (what <em>not</em> to put in it)
+- Compare AGENT.md vs .cursorrules vs .copilot
+- Show how to enforce AGENT.md in CI</p>
+<h2 id="just-say-where-you-want-to-go">Just say where you want to go.<a class="headerlink" href="#just-say-where-you-want-to-go" title="Permanent link">&para;</a></h2>
+<h2 id="-">-<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<ul>
+<li>This is a <em>very</em> mature question. You’re basically asking:</li>
+</ul>
+<blockquote>
+<p><strong>“If AI is doing more of the typing, what must I still be good at so the system doesn’t collapse?”</strong></p>
+</blockquote>
+<p>Short answer: <strong>judgment, framing, and verification</strong>.</p>
+<p>Long answer below — structured, practical, and tuned for a <strong>Java / Spring Boot / React full-stack developer</strong>.</p>
+<hr />
+<ul>
+<li>
+<h1 id="1-first-principle-non-negotiable"><strong>1️⃣ First Principle (Non-Negotiable)</strong><a class="headerlink" href="#1-first-principle-non-negotiable" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<blockquote>
+<p><strong>AI amplifies skill; it does not replace it.</strong></p>
+<p>With Agent.md, Specs, and Skills, <em>your leverage increases</em> — but only if your fundamentals are solid.</p>
+</blockquote>
+<p>So the question becomes:</p>
+<p><strong>Which human skills matter most when AI handles more execution?</strong></p>
+<hr />
+<ul>
+<li>
+<h1 id="2-the-three-skill-pillars-you-must-own"><strong>2️⃣ The Three Skill Pillars You Must Own</strong><a class="headerlink" href="#2-the-three-skill-pillars-you-must-own" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h2 id="1-architectural-thinking-primary-skill"><strong>🧠 1. Architectural Thinking (Primary Skill)</strong><a class="headerlink" href="#1-architectural-thinking-primary-skill" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>This is the <em>single most important skill</em>.
+- ### <strong>What this means for a Java Full-Stack Dev</strong></p>
+<p>You must be able to:
+- Decompose systems into bounded contexts
+- Choose where Spring Boot stops and frontend starts
+- Decide sync vs async
+- Decide transaction boundaries
+- Decide API contracts <em>before</em> code exists
+- ### <strong>Why AI can’t replace this</strong></p>
+<p>AI:
+- Generates <em>locally optimal</em> solutions
+- Struggles with long-term tradeoffs
+- Cannot feel organizational pain</p>
+<p><strong>Specs depend entirely on your architectural clarity.</strong></p>
+<hr />
+<ul>
+<li>
+<h2 id="2-problem-framing-specification-critical-skill"><strong>✍️ 2. Problem Framing &amp; Specification (Critical Skill)</strong><a class="headerlink" href="#2-problem-framing-specification-critical-skill" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="this-is-not-writing-requirements"><strong>This is NOT “writing requirements”</strong><a class="headerlink" href="#this-is-not-writing-requirements" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>This is:
+- Translating business needs → technical intent
+- Defining <em>constraints</em>, not just features
+- Writing acceptance criteria that are testable
+- ### <strong>Example</strong></p>
+<p>Bad spec:</p>
+<blockquote>
+<p>“User login should be secure”</p>
+</blockquote>
+<p>Good spec:
+- OAuth2 with JWT
+- Token TTL = 15 minutes
+- Refresh token rotation
+- Lockout after 5 failures
+- No PII in JWT claims</p>
+<p>AI executes specs — <strong>it does not invent good ones</strong>.</p>
+<hr />
+<ul>
+<li>
+<h2 id="3-code-review-verification-mandatory-skill"><strong>🔍 3. Code Review &amp; Verification (Mandatory Skill)</strong><a class="headerlink" href="#3-code-review-verification-mandatory-skill" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>AI writes code fast.</p>
+<p><strong>You must validate it faster.</strong></p>
+<p>You should be excellent at:
+- Reading code without executing it
+- Spotting hidden complexity
+- Identifying security holes
+- Recognizing “clever but wrong” solutions</p>
+<p>If you can’t confidently review AI-generated code, you shouldn’t let it write it.</p>
+<hr />
+<ul>
+<li>
+<h1 id="3-skill-mapping-to-agent-specs-and-skills"><strong>3️⃣ Skill Mapping to Agent, Specs, and Skills</strong><a class="headerlink" href="#3-skill-mapping-to-agent-specs-and-skills" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h2 id="skill-artifact-mapping"><strong>🧩 Skill → Artifact Mapping</strong><a class="headerlink" href="#skill-artifact-mapping" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>| 
+  <strong>Human Skill</strong>
+  | 
+  <strong>Agent.md</strong>
+  | 
+  <strong>Specs</strong>
+  | 
+  <strong>Skills</strong>
+  |
+  | ---- | ---- | ---- | ---- | ---- |
+  | 
+  Architectural judgment
+  | 
+  ✅
+  | 
+  ✅
+  | 
+  ❌
+  |
+  | 
+  Problem framing
+  | 
+  ❌
+  | 
+  ✅
+  | 
+  ❌
+  |
+  | 
+  Behavioral governance
+  | 
+  ✅
+  | 
+  ❌
+  | 
+  ❌
+  |
+  | 
+  Domain knowledge
+  | 
+  ❌
+  | 
+  ✅
+  | 
+  ⚠️
+  |
+  | 
+  Execution speed
+  | 
+  ❌
+  | 
+  ❌
+  | 
+  ✅
+  |
+  | 
+  Quality enforcement
+  | 
+  ✅
+  | 
+  ✅
+  | 
+  ⚠️
+  |</p>
+<hr />
+<ul>
+<li>
+<h1 id="4-java-full-stack-developer-what-to-double-down-on"><strong>4️⃣ Java Full-Stack Developer: What to Double Down On</strong><a class="headerlink" href="#4-java-full-stack-developer-what-to-double-down-on" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h3 id="skills-you-already-likely-have"><strong>✅ Skills You Already Likely Have</strong><a class="headerlink" href="#skills-you-already-likely-have" title="Permanent link">&para;</a></h3>
+</li>
+<li>Java &amp; Spring Boot syntax</li>
+<li>REST API development</li>
+<li>React component structure</li>
+<li>CSS frameworks (Tailwind)</li>
+<li>Basic CI/CD</li>
+</ul>
+<p>AI will <strong>accelerate</strong> these.</p>
+<hr />
+<ul>
+<li>
+<h3 id="skills-you-must-strengthen-now-critical"><strong>🔥 Skills You Must Strengthen (Now Critical)</strong><a class="headerlink" href="#skills-you-must-strengthen-now-critical" title="Permanent link">&para;</a></h3>
+</li>
+<li>
+<h2 id="a-system-design-backend"><strong>A. System Design (Backend)</strong><a class="headerlink" href="#a-system-design-backend" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>You must confidently decide:
+- Layering (Controller / Service / Domain)
+- DTO vs Entity boundaries
+- Transaction scopes
+- Caching strategy
+- Idempotency
+- Error semantics</p>
+<p>AI can implement — <strong>you must decide</strong>.</p>
+<hr />
+<ul>
+<li>
+<h2 id="b-api-contract-design"><strong>B. API &amp; Contract Design</strong><a class="headerlink" href="#b-api-contract-design" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>Before AI writes code, you should:
+- Define request/response models
+- Decide error formats
+- Define versioning strategy
+- Decide backward compatibility rules</p>
+<p>Specs should encode these decisions.</p>
+<hr />
+<ul>
+<li>
+<h2 id="c-security-compliance-thinking"><strong>C. Security &amp; Compliance Thinking</strong><a class="headerlink" href="#c-security-compliance-thinking" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>AI is <em>dangerous</em> here if you’re weak.</p>
+<p>You must understand:
+- OWASP Top 10
+- Spring Security internals
+- CORS implications
+- Token leakage risks
+- Frontend auth pitfalls</p>
+<p>Never “let AI handle security.”</p>
+<hr />
+<ul>
+<li>
+<h2 id="d-frontend-state-data-flow"><strong>D. Frontend State &amp; Data Flow</strong><a class="headerlink" href="#d-frontend-state-data-flow" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>AI is decent at components, poor at:
+- State normalization
+- Performance tradeoffs
+- Over-fetching
+- Accessibility</p>
+<p>You must guide:
+- React state architecture
+- API consumption patterns
+- Error handling UX</p>
+<hr />
+<ul>
+<li>
+<h1 id="5-skill-focus-by-role-java-full-stack"><strong>5️⃣ Skill Focus by Role (Java Full-Stack)</strong><a class="headerlink" href="#5-skill-focus-by-role-java-full-stack" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h2 id="backend-focus-areas"><strong>Backend Focus Areas</strong><a class="headerlink" href="#backend-focus-areas" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>| 
+  <strong>Area</strong>
+  | 
+  <strong>Why It Matters with AI</strong>
+  |
+  | ---- | ---- | ---- | ---- | ---- |
+  | 
+  Domain modeling
+  | 
+  AI flattens domains unless guided
+  |
+  | 
+  Transaction management
+  | 
+  Silent data corruption risk
+  |
+  | 
+  Observability
+  | 
+  AI rarely adds it unless asked
+  |
+  | 
+  Performance thinking
+  | 
+  AI optimizes for clarity, not scale
+  |</p>
+<hr />
+<ul>
+<li>
+<h2 id="frontend-focus-areas"><strong>Frontend Focus Areas</strong><a class="headerlink" href="#frontend-focus-areas" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>| 
+  <strong>Area</strong>
+  | 
+  <strong>Why It Matters</strong>
+  |
+  | ---- | ---- | ---- | ---- | ---- |
+  | 
+  State management
+  | 
+  AI creates prop-drilling spaghetti
+  |
+  | 
+  UX consistency
+  | 
+  AI lacks product intuition
+  |
+  | 
+  Accessibility
+  | 
+  AI forgets it
+  |
+  | 
+  Bundle size
+  | 
+  AI over-imports
+  |</p>
+<hr />
+<ul>
+<li>
+<h1 id="6-what-not-to-over-invest-in-anymore"><strong>6️⃣ What NOT to Over-Invest In Anymore</strong><a class="headerlink" href="#6-what-not-to-over-invest-in-anymore" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>AI will cover these <em>very well</em>:
+- Boilerplate CRUD
+- DTO mapping
+- Repetitive tests
+- Styling iterations
+- Basic refactors</p>
+<p>Your value is <strong>not typing speed</strong> anymore.</p>
+<hr />
+<ul>
+<li>
+<h1 id="7-how-agentmd-changes">**7️⃣ How Agent.md Changes **<a class="headerlink" href="#7-how-agentmd-changes" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h1 id="your"><strong>Your</strong><a class="headerlink" href="#your" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h1 id="role">** Role**<a class="headerlink" href="#role" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>With a strong Agent.md:
+- You act like a <strong>tech lead</strong>
+- Even when coding solo
+- Every AI interaction is governed</p>
+<p>Your responsibility:
+- Write the constitution
+- Enforce it
+- Update it sparingly</p>
+<hr />
+<ul>
+<li>
+<h1 id="8-how-skills-change">**8️⃣ How Skills Change **<a class="headerlink" href="#8-how-skills-change" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h1 id="your_1"><strong>Your</strong><a class="headerlink" href="#your_1" title="Permanent link">&para;</a></h1>
+</li>
+<li>
+<h1 id="role_1">** Role**<a class="headerlink" href="#role_1" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>Skills mean:
+- You stop re-explaining how to do things
+- You standardize quality
+- You offload execution, not thinking</p>
+<p>Your responsibility:
+- Choose the right skill
+- Validate the output</p>
+<hr />
+<ul>
+<li>
+<h1 id="9-practical-skill-checklist-self-assessment"><strong>9️⃣ Practical Skill Checklist (Self-Assessment)</strong><a class="headerlink" href="#9-practical-skill-checklist-self-assessment" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<p>If you say “yes” to most of these, you’re ready:
+- I can design a Spring Boot service without writing code
+- I can review a PR in under 10 minutes and spot risks
+- I can explain tradeoffs in 3 sentences
+- I can define acceptance criteria precisely
+- I understand security implications of my choices
+- I know when <em>not</em> to use AI</p>
+<hr />
+<ul>
+<li>
+<h1 id="final-truth-architect-to-architect"><strong>🔑 Final Truth (Architect to Architect)</strong><a class="headerlink" href="#final-truth-architect-to-architect" title="Permanent link">&para;</a></h1>
+</li>
+</ul>
+<blockquote>
+<p><strong>AI turns developers into architects faster — or exposes who never was one.</strong></p>
+</blockquote>
+<p>Agent.md, Specs, and Skills don’t make you better.</p>
+<p>They <strong>demand that you already are</strong>.</p>
+<p>If you want next, I can:
+- Design a <strong>Java Full-Stack AGENT.md</strong>
+- Propose <strong>starter skills</strong> for Spring Boot + React
+- Show <strong>before/after workflows</strong> (with and without AI)
+- Create a <strong>learning roadmap</strong> for this transition</p>
+<h2 id="just-tell-me-where-you-want-to-go-next">Just tell me where you want to go next.<a class="headerlink" href="#just-tell-me-where-you-want-to-go-next" title="Permanent link">&para;</a></h2>
+<h2 id="-just-say-the-word">- Just say the word.<a class="headerlink" href="#-just-say-the-word" title="Permanent link">&para;</a></h2>
+<p>-
+- SPECKIT vs SPECFLOW ....
+- Here’s a clear breakdown of the <strong>philosophy behind GitHub’s Spec Kit</strong>, how it <strong>differs from Microsoft’s SpecFlow</strong>, and how <strong>Specification-Driven Development (especially with AI)</strong> compares to <strong>traditional Behavior-Driven Development (BDD) as done by humans</strong>.</p>
+<hr />
+<ul>
+<li>
+<h2 id="_1">**🧠 **<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h2 id="1-whats-the-philosophy-behind-spec-kit-github"><strong>1. What’s the Philosophy Behind Spec Kit (GitHub)</strong><a class="headerlink" href="#1-whats-the-philosophy-behind-spec-kit-github" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p><strong>Spec Kit</strong> is built around the idea of <strong>Spec-Driven Development (SDD)</strong> — a new AI-centric development workflow that <strong>makes specifications the true source of truth</strong> and uses them to <em>drive the generation of actual working code</em> rather than just guide it.
+- ### <strong>🧩 Core Ideas</strong>
+- <strong>“What before How”</strong> – Emphasize <em>what</em> the system should do (the intent) before <em>how</em> it should do it.
+- <strong>Executable Specs</strong> – Specifications aren’t just documentation; they are refined and used to <em>generate implementation</em> through AI agents.
+- <strong>Structured Workflow with AI Agents</strong> – There’s a multi-stage workflow:
+    - <strong>Constitution</strong> – Set project principles
+    - <strong>Specify</strong> – Write the product spec
+    - <strong>Plan</strong> – Add tech context (stack, architectural decisions)
+    - <strong>Tasks</strong> – Break work into actionable steps
+    - <strong>Implement</strong> – Have AI assistants build the code from tasks
+- <strong>AI-first orchestration</strong> – Heavy reliance on AI for interpreting specs, planning, and executing tasks, with humans in a review/verification loop.
+- ### <strong>🧠 Why This Matters</strong></p>
+<p>Traditional dev is often <em>code-centric</em> — start coding and defer specifications/documentation. SDD flips that: <em>specs drive the entire creation process</em>, and code is synthesized to match the spec.  </p>
+<hr />
+<ul>
+<li>
+<h2 id="_2">**🧪 **<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h2 id="2-what-is-specflow-microsoft-net-bdd-tool"><strong>2. What Is SpecFlow (Microsoft / .NET BDD Tool)</strong><a class="headerlink" href="#2-what-is-specflow-microsoft-net-bdd-tool" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p><strong>SpecFlow</strong> is a BDD (Behavior-Driven Development) automation framework, particularly for the .NET ecosystem. It lets teams write <strong>executable behavior specs using Gherkin syntax</strong>, then automates those as tests.
+- ### <strong>🧠 Key Traits</strong>
+- <strong>Gherkin language</strong>: Uses plain, human-readable syntax like <em>Given/When/Then</em> to define behavior.
+- <strong>Focus on Collaboration and Testing</strong>: Aligns developers, testers, and business stakeholders by describing expected <em>behavior</em> of features before implementation.
+- <strong>Automation of Tests</strong>: Features are automatically executed as acceptance tests tied to .NET code.
+- NOT inherently an AI generation tool — it’s a <strong>framework for writing tests and living documentation</strong>, not for generating implementation.  </p>
+<hr />
+<ul>
+<li>
+<h2 id="_3">**🔍 **<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h2 id="3-spec-kit-vs-specflow-core-differences"><strong>3. Spec Kit vs SpecFlow — Core Differences</strong><a class="headerlink" href="#3-spec-kit-vs-specflow-core-differences" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>| <strong>Aspect</strong>| <strong>Spec Kit (Spec-Driven Dev)</strong>| <strong>SpecFlow (BDD)</strong>|
+  | ---- | ---- | ---- | ---- | ---- |
+  | <strong>Goal</strong>| Drive <em>code generation</em> from rich specs via AI| Drive <em>test automation</em> and shared behavioral specs|
+  | <strong>Output</strong>| Implementation (code, tasks, tests)| Executable tests that verify behavior|
+  | <strong>Role of AI</strong>| Central to generating and refining output| Optional (mostly human-driven)|
+  | <strong>Language</strong>| Structured spec commands + narrative| Gherkin (Given/When/Then)|
+  | <strong>Feedback Loop</strong>| Specs → implementation → update specs| Specs/tests verify implementation|
+  | <strong>Documentation Role</strong>| Specs are authoritative, machine-executable| Specs are “living documentation” for testing|</p>
+<p><strong>In short</strong>:
+- Spec Kit uses <em>specs as executable drivers of code via AI</em>.
+- SpecFlow uses <em>behavioral specs as tests</em> to ensure the software meets requirements.</p>
+<hr />
+<ul>
+<li>
+<h2 id="_4">**🤖 **<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h2 id="4-spec-driven-dev-vs-bdd-with-human-developers"><strong>4. Spec-Driven Dev vs BDD with Human Developers</strong><a class="headerlink" href="#4-spec-driven-dev-vs-bdd-with-human-developers" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="_5">**📌 **<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+</li>
+<li>
+<h3 id="specification-driven-development-with-ai-code-assistants"><strong>Specification-Driven Development (with AI Code Assistants)</strong><a class="headerlink" href="#specification-driven-development-with-ai-code-assistants" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p><strong>Philosophy</strong>
+- The spec is the primary artifact from which implementation is derived.
+- AI consumes specs and planning docs, then <em>generates code, tasks, tests</em>.
+- The process emphasizes <em>structured refinement</em> and <em>clear intent</em>, reducing ad-hoc coding.  </p>
+<p><strong>Pros</strong>
+- Speeds creation of features and entire systems when AI is good at interpreting specs.
+- Encourages up-front clarity, alignment, and planning.
+- Reduces manual coding boilerplate and repetitive tasks.</p>
+<p><strong>Cons / Challenges</strong>
+- Still experimental; depends on AI quality and tooling maturity.
+- Requires good spec writing skills and human review discipline.
+- Risk of “garbage in → garbage out” if specs are vague.
+- ### <strong>📌 **
+- ### **Behavior-Driven Development (Human-Driven)</strong></p>
+<p><strong>Philosophy</strong>
+- Write clear descriptions of behavior in human language (often Gherkin) to capture expectations.
+- Focuses on <em>shared understanding</em> among business and technical teams.  </p>
+<p><strong>Pros</strong>
+- Ensures alignment across stakeholders.
+- Creates living tests tracing requirements to automated verification.
+- Encourages test first and communication.</p>
+<p><strong>Cons</strong>
+- Manual writing and maintaining feature files can be time-consuming.
+- Requires discipline in writing scenarios that truly reflect desired behavior.
+- Execution and coverage quality depend on human testers/developers.</p>
+<hr />
+<ul>
+<li>
+<h2 id="_6">**📊 **<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h2 id="5-summary-comparison"><strong>5. Summary Comparison</strong><a class="headerlink" href="#5-summary-comparison" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>| <strong>Dimension</strong>| <strong>Spec-Driven with AI</strong>| <strong>BDD with Human Developers</strong>|
+  | ---- | ---- | ---- | ---- | ---- |
+  | <strong>Primary Artifact</strong>| Rich structured specifications| Behavior scenarios (Gherkin tests)|
+  | <strong>Driver of Work</strong>| AI agents generating code| Humans writing and implementing tests|
+  | <strong>Feedback</strong>| AI-built code validated by humans| Tests failing/passing validate code|
+  | <strong>Alignment</strong>| Specification → implementation| Conversation → scenario → implementation|
+  | <strong>Automation Scope</strong>| High (from spec to code)| High for tests, lower for full code|
+  | <strong>Risk</strong>| Misinterpretation by AI| Miscommunication among humans|</p>
+<hr />
+<ul>
+<li>
+<h3 id="final-thought"><strong>🧠 Final Thought</strong><a class="headerlink" href="#final-thought" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>Spec Kit — and SDD in general — is a <strong>shift toward AI-orchestrated, spec-first development</strong>, making specifications the <em>executable blueprint</em> rather than just documentation. In contrast, SpecFlow is a <strong>classic BDD tool</strong>, focused on using shared behavioral descriptions to <em>verify</em> that code meets expectations. Both aim to improve collaboration and clarity, but one <strong>generates code from specs via AI</strong>, while the other <strong>drives tests from behavior specs written by humans</strong>.</p>
+<h2 id="if-you-want-i-can-provide-a-sample-side-by-side-workflow-demo-or-tangible-examples-of-how-a-simple-feature-would-be-specd-in-each-approach">If you want, I can provide a sample side-by-side workflow demo or tangible examples of how a simple feature would be spec’d in each approach!<a class="headerlink" href="#if-you-want-i-can-provide-a-sample-side-by-side-workflow-demo-or-tangible-examples-of-how-a-simple-feature-would-be-specd-in-each-approach" title="Permanent link">&para;</a></h2>
+<p>-
+- SYSTEM PROMPTS VS USER PROMPTS
+- When working with an AI Code Assistant (or any LLM-based assistant), <strong>System Prompts</strong> and <strong>User Prompts</strong> play very different roles in how the model behaves and responds.</p>
+<hr />
+<ul>
+<li>
+<h2 id="1-system-prompt"><strong>1. System Prompt</strong><a class="headerlink" href="#1-system-prompt" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="what-it-is"><strong>What it is</strong><a class="headerlink" href="#what-it-is" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>A <strong>system prompt</strong> is an instruction that <strong>defines the AI’s role, behavior, and constraints</strong>. It sets the <em>rules of engagement</em> for the assistant.
+- ### <strong>Purpose</strong>
+- Establish <em>how</em> the assistant should behave
+- Define tone, style, depth, and priorities
+- Impose constraints (what to do or not do)
+- Provide global context that applies to <strong>all</strong> interactions in the session
+- ### <strong>Characteristics</strong>
+- Typically written by the <strong>platform, tool, or developer</strong>, not the end user
+- Has the <strong>highest priority</strong> in the prompt hierarchy
+- Usually invisible or non-editable by the user
+- Remains consistent across many user prompts
+- ### <strong>Examples (AI Code Assistant context)</strong>
+- “You are a senior software engineer specializing in Python and cloud-native systems.”
+- “Always explain code with concise comments and provide best practices.”
+- “Do not generate insecure code or expose secrets.”
+- “Prefer readability over cleverness.”
+- ### <strong>Mental model</strong></p>
+<blockquote>
+<p><em>System prompt = the assistant’s job description and rules</em></p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h2 id="2-user-prompt"><strong>2. User Prompt</strong><a class="headerlink" href="#2-user-prompt" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="what-it-is_1"><strong>What it is</strong><a class="headerlink" href="#what-it-is_1" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p>A <strong>user prompt</strong> is the <strong>specific request or question</strong> the developer asks the AI.
+- ### <strong>Purpose</strong>
+- Describe <em>what task to perform right now</em>
+- Provide immediate context, inputs, or constraints for that task
+- Drive the actual output
+- ### <strong>Characteristics</strong>
+- Written by the <strong>developer or end user</strong>
+- Lower priority than the system prompt
+- Changes from request to request
+- Task-oriented and situational
+- ### <strong>Examples (AI Code Assistant context)</strong>
+- “Write a FastAPI endpoint to upload a CSV file.”
+- “Refactor this function to improve performance.”
+- “Explain why this Python code raises a KeyError.”
+- “Generate unit tests for this class.”
+- ### <strong>Mental model</strong></p>
+<blockquote>
+<p><em>User prompt = the task to do</em></p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h2 id="3-key-differences-at-a-glance"><strong>3. Key Differences at a Glance</strong><a class="headerlink" href="#3-key-differences-at-a-glance" title="Permanent link">&para;</a></h2>
+</li>
+<li>|<strong>Aspect</strong>| <strong>System Prompt</strong>| <strong>User Prompt</strong>|
+  | ---- | ---- | ---- | ---- | ---- |
+  | Scope| Global / session-wide| Local / per request|
+  | Who sets it| Tool, platform, developer| End user / developer|
+  | Priority| Highest| Lower|
+  | Purpose| Define behavior &amp; rules| Request a task|
+  | Persistence| Long-lived| Short-lived|
+  | Visibility| Often hidden| Always visible|</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h2 id="4-how-they-work-together"><strong>4. How They Work Together</strong><a class="headerlink" href="#4-how-they-work-together" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>In practice, the AI responds by <strong>combining both</strong>:
+- <strong>System prompt</strong> defines <em>how</em> the answer should be shaped
+- <strong>User prompt</strong> defines <em>what</em> the answer should be about
+- ### <strong>Example</strong></p>
+<p><strong>System prompt</strong>:</p>
+<blockquote>
+<p>“You are an AI coding assistant that produces production-ready Python code with clear explanations.”</p>
+</blockquote>
+<p><strong>User prompt</strong>:</p>
+<blockquote>
+<p>“Create a Flask app with one /health endpoint.”</p>
+</blockquote>
+<p><strong>Result</strong>:
+- Flask code (task from user prompt)
+- Clean, production-style structure and explanation (influenced by system prompt)</p>
+<hr />
+<ul>
+<li>
+<h2 id="5-why-this-matters-for-developers"><strong>5. Why This Matters for Developers</strong><a class="headerlink" href="#5-why-this-matters-for-developers" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>Understanding the distinction helps you:
+- Design <strong>better AI-assisted development workflows</strong>
+- Use system prompts to enforce <strong>coding standards and safety</strong>
+- Keep user prompts focused on <strong>intent, not behavior</strong>
+- Achieve more <strong>consistent and predictable outputs</strong></p>
+<hr />
+<ul>
+<li>
+<h3 id="one-line-summary"><strong>One-line summary</strong><a class="headerlink" href="#one-line-summary" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<h2 id="system-prompts-define-the-ais-behavior-user-prompts-define-the-ais-task">&gt; <strong>System prompts define the AI’s behavior; user prompts define the AI’s task.</strong><a class="headerlink" href="#system-prompts-define-the-ais-behavior-user-prompts-define-the-ais-task" title="Permanent link">&para;</a></h2>
+<h2 id="-_1">-<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>from ChatGPT...</li>
+<li>A <strong>legacy software application</strong> is generally defined not just by its age, but by the <strong>constraints and risks</strong> it introduces to an organization.</li>
+</ul>
+<p>Below is a structured, practical explanation.</p>
+<hr />
+<ul>
+<li>
+<h2 id="1-what-is-a-legacy-software-application"><strong>1. What is a Legacy Software Application?</strong><a class="headerlink" href="#1-what-is-a-legacy-software-application" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>A <strong>legacy application</strong> is a software system that:
+- Is <strong>critical to business operations</strong>, but
+- Is <strong>difficult, risky, or costly to modify, maintain, or replace</strong>, due to technical, organizational, or strategic limitations.</p>
+<blockquote>
+<p>In practice, something becomes “legacy” when <strong>change velocity slows down</strong> while <strong>business dependency remains high</strong>.</p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h2 id="2-key-factors-qualities-of-a-legacy-application"><strong>2. Key Factors / Qualities of a Legacy Application</strong><a class="headerlink" href="#2-key-factors-qualities-of-a-legacy-application" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>Legacy status usually emerges from a <strong>combination</strong> of the following factors.
+- ### <strong>A. Technical Characteristics</strong>
+- <strong>Outdated Technology Stack</strong>
+    - Obsolete or declining languages (e.g., COBOL, VB6, PowerBuilder)
+    - Unsupported frameworks or runtimes
+    - End-of-life OS, databases, or middleware
+- <strong>Tight Coupling &amp; Poor Architecture</strong>
+    - Monolithic design
+    - Hard-coded business rules
+    - Lack of modularity or clear interfaces
+    - No APIs or undocumented integrations
+- <strong>Low Testability</strong>
+    - Few or no automated tests
+    - Difficult to create test environments
+    - Manual regression testing only
+- <strong>High Technical Debt</strong>
+    - Accumulated quick fixes
+    - Inconsistent coding standards
+    - Fragile behavior (“change one thing, break three others”)</p>
+<div class="language-text highlight"><pre><span></span><code>  ---
+</code></pre></div>
+<ul>
+<li>
+<h3 id="b-knowledge-people-factors"><strong>B. Knowledge &amp; People Factors</strong><a class="headerlink" href="#b-knowledge-people-factors" title="Permanent link">&para;</a></h3>
+</li>
+<li><strong>Loss of Institutional Knowledge</strong><ul>
+<li>Original developers have left</li>
+<li>Minimal or outdated documentation</li>
+<li>“Only one person knows how it works”</li>
+</ul>
+</li>
+<li>
+<p><strong>Skill Scarcity</strong></p>
+<ul>
+<li>Hard to hire engineers with the required expertise</li>
+<li>New developers struggle to onboard</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h3 id="c-operational-characteristics"><strong>C. Operational Characteristics</strong><a class="headerlink" href="#c-operational-characteristics" title="Permanent link">&para;</a></h3>
+</li>
+<li><strong>High Risk of Change</strong></li>
+<li>Even small changes cause outages</li>
+<li>Long release cycles</li>
+<li>Fear-driven development (“don’t touch it”)</li>
+<li><strong>Costly Maintenance</strong></li>
+<li>Increasing effort to keep running</li>
+<li>High support and operational costs</li>
+<li>Expensive vendor lock-in</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h3 id="d-business-strategic-factors"><strong>D. Business &amp; Strategic Factors</strong><a class="headerlink" href="#d-business-strategic-factors" title="Permanent link">&para;</a></h3>
+</li>
+<li><strong>Misalignment with Current Business Needs</strong></li>
+<li>Doesn’t support new workflows</li>
+<li>Hard to integrate with modern systems</li>
+<li>Slows innovation and time-to-market</li>
+<li><strong>Compliance &amp; Security Risks</strong></li>
+<li>Cannot meet modern security standards</li>
+<li>Audit or regulatory gaps</li>
+<li>Unsupported libraries with known vulnerabilities</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h2 id="3-common-misconceptions"><strong>3. Common Misconceptions</strong><a class="headerlink" href="#3-common-misconceptions" title="Permanent link">&para;</a></h2>
+</li>
+<li>❌ “Old software = legacy”
+  → Not necessarily. Well-maintained older systems may not be legacy.
+-</li>
+<li>❌ “Legacy means useless”
+  → Many legacy systems are <strong>mission-critical</strong> and extremely valuable.
+-</li>
+<li>❌ “We must rewrite everything”
+  → Full rewrites are often the <strong>riskiest option</strong>.</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h2 id="4-typical-scenarios-for-legacy-applications"><strong>4. Typical Scenarios for Legacy Applications</strong><a class="headerlink" href="#4-typical-scenarios-for-legacy-applications" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h3 id="scenario-1-mission-critical-core-system"><strong>Scenario 1: Mission-Critical Core System</strong><a class="headerlink" href="#scenario-1-mission-critical-core-system" title="Permanent link">&para;</a></h3>
+</li>
+<li>Billing, ERP, payroll, inventory, banking systems</li>
+<li>Business depends on it daily</li>
+<li>Downtime is unacceptable</li>
+<li>
+<h3 id="scenario-2-integration-bottleneck"><strong>Scenario 2: Integration Bottleneck</strong><a class="headerlink" href="#scenario-2-integration-bottleneck" title="Permanent link">&para;</a></h3>
+</li>
+<li>Legacy system blocks cloud adoption</li>
+<li>No APIs; uses file drops, batch jobs, or manual steps</li>
+<li>
+<h3 id="scenario-3-compliance-pressure"><strong>Scenario 3: Compliance Pressure</strong><a class="headerlink" href="#scenario-3-compliance-pressure" title="Permanent link">&para;</a></h3>
+</li>
+<li>Regulatory requirements force modernization</li>
+<li>Security or audit issues cannot be patched easily</li>
+<li>
+<h3 id="scenario-4-cost-vs-value-tipping-point"><strong>Scenario 4: Cost vs. Value Tipping Point</strong><a class="headerlink" href="#scenario-4-cost-vs-value-tipping-point" title="Permanent link">&para;</a></h3>
+</li>
+<li>Maintenance cost exceeds business value</li>
+<li>Vendor support is ending</li>
+</ul>
+<hr />
+<ul>
+<li>
+<h2 id="5-common-approaches-to-handling-legacy-applications"><strong>5. Common Approaches to Handling Legacy Applications</strong><a class="headerlink" href="#5-common-approaches-to-handling-legacy-applications" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>There is <strong>no one-size-fits-all</strong> approach. Most organizations use a mix.</p>
+<hr />
+<ul>
+<li>
+<h3 id="1-leave-as-is-encapsulation-keep-the-lights-on"><strong>1. Leave As-Is (Encapsulation / “Keep the Lights On”)</strong><a class="headerlink" href="#1-leave-as-is-encapsulation-keep-the-lights-on" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p><strong>When:</strong>
+- Stable, low change frequency
+- High replacement risk</p>
+<p><strong>How:</strong>
+- Add APIs or wrappers
+- Isolate it from newer systems
+- Focus on monitoring and backups</p>
+<p><strong>Pros:</strong> Low risk</p>
+<p><strong>Cons:</strong> Innovation remains limited</p>
+<hr />
+<ul>
+<li>
+<h3 id="2-refactor-modernize-incrementally"><strong>2. Refactor / Modernize Incrementally</strong><a class="headerlink" href="#2-refactor-modernize-incrementally" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p><strong>When:</strong>
+- System is still evolving
+- Core logic is valuable</p>
+<p><strong>How:</strong>
+- Improve code structure gradually
+- Introduce automated tests
+- Break monolith into modules or services
+- Upgrade tech stack step by step
+  <strong>Pros:</strong> Controlled risk, continuous value
+  <strong>Cons:</strong> Requires discipline and time</p>
+<hr />
+<ul>
+<li>
+<h3 id="3-replatform-lift-and-shift-with-improvements"><strong>3. Replatform (Lift-and-Shift with Improvements)</strong><a class="headerlink" href="#3-replatform-lift-and-shift-with-improvements" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p><strong>When:</strong>
+- Infrastructure is the main issue</p>
+<p><strong>How:</strong>
+- Move to modern OS, DB, cloud
+- Minimal code changes
+  <strong>Pros:</strong> Faster than rewrite
+  <strong>Cons:</strong> Technical debt remains</p>
+<hr />
+<ul>
+<li>
+<h3 id="4-rewrite-replace"><strong>4. Rewrite / Replace</strong><a class="headerlink" href="#4-rewrite-replace" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p><strong>When:</strong>
+- System fundamentally blocks business goals
+- Logic is poorly understood or obsolete</p>
+<p><strong>How:</strong>
+- Build a new system in parallel
+- Gradual data and feature migration
+- Decommission legacy system in phases
+  <strong>Pros:</strong> Clean slate
+  <strong>Cons:</strong> High risk, high cost, long timelines</p>
+<blockquote>
+<p>Many failed IT projects come from <strong>underestimating rewrite complexity</strong>.</p>
+</blockquote>
+<hr />
+<ul>
+<li>
+<h3 id="5-strangler-fig-pattern-most-practical"><strong>5. Strangler Fig Pattern (Most Practical)</strong><a class="headerlink" href="#5-strangler-fig-pattern-most-practical" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<p><strong>When:</strong>
+- Large, complex legacy system</p>
+<p><strong>How:</strong>
+- Build new functionality around the legacy system
+- Gradually replace parts
+- Route traffic to new components over time
+  <strong>Pros:</strong> Reduced risk, continuous delivery
+  <strong>Cons:</strong> Architectural complexity during transition</p>
+<hr />
+<ul>
+<li>
+<h2 id="6-decision-framework-quick-guide"><strong>6. Decision Framework (Quick Guide)</strong><a class="headerlink" href="#6-decision-framework-quick-guide" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>Ask these questions:
+- Is the system <strong>still delivering business value</strong>?
+- How often does it need to change?
+- What is the <strong>risk of failure</strong> vs. risk of change?
+- Is the main pain <strong>technology, architecture, people, or business fit</strong>?
+- What is the <strong>time horizon</strong> (1 year vs. 5 years)?</p>
+<p>The answers usually determine the strategy.</p>
+<hr />
+<ul>
+<li>
+<h2 id="7-key-takeaway"><strong>7. Key Takeaway</strong><a class="headerlink" href="#7-key-takeaway" title="Permanent link">&para;</a></h2>
+</li>
+</ul>
+<p>A legacy application is not defined by age, but by:</p>
+<blockquote>
+<p><strong>High business dependence combined with low adaptability.</strong></p>
+</blockquote>
+<p>The goal is rarely “remove legacy” — it is to <strong>manage risk while restoring agility</strong>.</p>
+<p>If you want, I can:
+- Provide a <strong>real-world example</strong> (e.g., banking, manufacturing, or web apps)
+- Help create a <strong>decision matrix</strong> for a specific legacy system
+- Map these approaches to <strong>cloud migration strategies</strong>
+-
+-
+-
+- from POE
+- A <strong>legacy software application</strong> is typically defined as an old or outdated application that is still in use, despite the availability of newer solutions. These applications often play critical roles in an organization but may present various challenges due to their age and technological limitations.
+- ### Key Factors or Qualities of a Legacy Application
+- <strong>Outdated Technology Stack</strong>:
+    - Uses old programming languages, frameworks, or hardware.
+    - May not integrate well with modern systems.
+- <strong>Dependence on Existing Infrastructure</strong>:
+    - Often closely tied to specific hardware or operating systems.
+    - Migration may require significant changes to existing setups.
+- <strong>Limited Documentation</strong>:
+    - May lack up-to-date documentation or support, making maintenance difficult.
+    - Knowledge may be siloed with specific teams or individuals.
+- <strong>High Maintenance Costs</strong>:
+    - Increased costs associated with maintaining and updating outdated systems.
+    - Often requires specialized skills that may be hard to find.
+- <strong>Rigidity and Lack of Flexibility</strong>:
+    - Difficult to modify or scale, which can hinder adaptability to business needs.
+    - Changes can be slow and cumbersome.
+- <strong>Compliance and Security Risks</strong>:
+    - Older systems may not meet current security or regulatory standards.
+    - Therefore, they can pose risks to data security and compliance.
+- ### Typical Scenarios or Approaches for Handling a Legacy Application
+- <strong>Refactoring</strong>:
+    - Incrementally rewriting sections of the application while retaining functionality.
+    - Improves maintainability and can modernize parts of the system.
+- <strong>Replatforming</strong>:
+    - Moving the application to a different platform without significant changes to its mechanics.
+    - Often includes shifting to cloud environments or updated operating systems.
+- <strong>Replacing with New Solutions</strong>:
+    - Completely phasing out the old system in favor of a new application designed with modern technology.
+    - Requires careful planning and a transition strategy to ensure business continuity.
+- <strong>Containerization</strong>:
+    - Packaging the legacy application into containers to make it more portable and manageable.
+    - Helps in isolating the application from dependencies on the underlying operating system.
+- <strong>Integration with Modern Tools</strong>:
+    - Using APIs or middleware to connect legacy applications with modern systems.
+    - Provides a way to extend the application’s functionality without complete replacement.
+- <strong>Emulation or Virtualization</strong>:
+    - Running legacy software on emulated or virtual environments to preserve functionality.
+    - Helps in maintaining legacy systems on newer hardware.
+- <strong>Gradual Replacement</strong>:
+    - Phasing out legacy components piece by piece while ensuring the new system covers the existing functionality.
+    - Allows for a smooth transition and minimizes disruption.</p>
+<div class="language-text highlight"><pre><span></span><code>  Understanding these aspects can guide businesses in effectively managing and transitioning away from legacy applications, while also mitigating risks associated with their continued use.
+</code></pre></div>
+<h2 id="-_2">-<a class="headerlink" href="#-_2" title="Permanent link">&para;</a></h2>
+<p>-
+- Qualities / properties of a Legacy application
+- outline podcast talking points.. use general purpose AI.. chatgpt
+    - age old techniques are still important and now even more... "working effectively with legacy code" Micheal Feathers 2004
+    - code vs business requirement
+    - developer mindeset .. typical vs desired
+    - black box vs exploratory
+    - AI for analysis -&gt; documentation -&gt; specs
+    - AI for wrap-around-testing
+    - feature by feature
+    - upgrade or latest up to date business requirements can help a long way
+    - where and how does speckit fit in this equation
+    - if you know the tech-stack and if you know the insides of that legacy app, there is a difference..
+- some handy references..
+    - https://martinfowler.com/articles/legacy-modernization-gen-ai.html
+    - https://www.thoughtworks.com/en-in/insights/podcasts/technology-podcasts/using-generative-ai-legacy-modernization
+    - https://github.com/sugarac/JS-Books/blob/master/%5BPROGRAMMING%5D%5BWorking%20Effectively.%20with%20Legacy%20Code%5D.pdf
+    - {{video https://www.youtube.com/watch?v=CTU7TYgriGE}}
+    - https://www.briansnotes.io/book/working-effectively-with-legacy-code/
+    - https://medium.com/@wuyichen/exploring-working-effectively-with-legacy-code-by-michael-feathers-5ec04b931a52
+    - https://understandlegacycode.com/blog/key-points-of-working-effectively-with-legacy-code/
+    - https://www.oreilly.com/library/view/working-effectively-with/0131177052/</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Experiments with AI Code Assistant
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
