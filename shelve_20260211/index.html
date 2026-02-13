@@ -2732,6 +2732,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -2860,6 +2864,69 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-1-set-up-google-cloud-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Set Up Google Cloud Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-install-google-cloud-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Install Google Cloud SDK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-prepare-your-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Prepare Your Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-deploy-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Deploy the Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-manage-and-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Manage and Monitor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2896,6 +2963,52 @@
   
   <span class="md-ellipsis">
     AI Asst Research
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06restaurants/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    experiment 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07geoemerge/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    experiment 07
     
   </span>
   
@@ -2995,6 +3108,74 @@
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># github pages.. need to get this working</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># gh pages -b gh-pages</span>
 </span></code></pre></div>
+<p>Deploying a Python application in Google Cloud can be done using various services like Google App Engine, Google Cloud Run, or Google Kubernetes Engine. Here's a step-by-step guide for deploying a Python application using Google App Engine, which is a popular choice for web applications.</p>
+<h3 id="step-1-set-up-google-cloud-account">Step 1: Set Up Google Cloud Account<a class="headerlink" href="#step-1-set-up-google-cloud-account" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Create a Google Cloud Account</strong>: Sign up for a <a href="https://cloud.google.com/">Google Cloud account</a>.</li>
+<li><strong>Create a Google Cloud Project</strong>: In the Google Cloud Console, create a new project.</li>
+</ol>
+<h3 id="step-2-install-google-cloud-sdk">Step 2: Install Google Cloud SDK<a class="headerlink" href="#step-2-install-google-cloud-sdk" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Install the Google Cloud SDK</strong>: Follow the instructions to <a href="https://cloud.google.com/sdk/docs/install">install the Google Cloud SDK</a>.</li>
+<li><strong>Initialize the SDK</strong>: Run <code>gcloud init</code> to set up your Google Cloud project.</li>
+</ol>
+<h3 id="step-3-prepare-your-application">Step 3: Prepare Your Application<a class="headerlink" href="#step-3-prepare-your-application" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Create Your Python Application</strong>: Organize your Python code. Ensure that you have a file named <code>app.yaml</code> in your project root, which contains configuration settings for your App Engine.</li>
+</ol>
+<p>Example <code>app.yaml</code>:
+   <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python310</span><span class="w">  </span><span class="c1"># Use the latest Python version available</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gunicorn -b :$PORT main:app</span><span class="w">  </span><span class="c1"># Adjust according to your app setup</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">handlers</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/.*</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+</span></code></pre></div></p>
+<ol>
+<li>
+<p><strong>Dependencies</strong>: Create a <code>requirements.txt</code> file to list your dependencies. For example:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>flask
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>gunicorn
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Create your main application file</strong> (e.g., <code>main.py</code>):
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">return</span> <span class="s2">&quot;Hello, World!&quot;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</span></code></pre></div></p>
+</li>
+</ol>
+<h3 id="step-4-deploy-the-application">Step 4: Deploy the Application<a class="headerlink" href="#step-4-deploy-the-application" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Deploy to App Engine</strong>: In the terminal, navigate to your project directory and run:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>gcloud<span class="w"> </span>app<span class="w"> </span>deploy
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Access Your Application</strong>: Once the deployment is complete, you can access your application at <code>https://&lt;your-project-id&gt;.appspot.com</code>.</p>
+</li>
+</ol>
+<h3 id="step-5-manage-and-monitor">Step 5: Manage and Monitor<a class="headerlink" href="#step-5-manage-and-monitor" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use the Google Cloud Console to manage and monitor your application. You can check logs, view traffic, and manage resources.</li>
+</ul>
+<h3 id="additional-considerations">Additional Considerations<a class="headerlink" href="#additional-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Database</strong>: If your application requires a database, consider using Google Cloud Firestore, Cloud SQL, or Datastore.</li>
+<li><strong>Environment Variables</strong>: You can set environment variables in the <code>app.yaml</code> file for sensitive information.</li>
+<li><strong>Scaling and Traffic Management</strong>: App Engine can automatically scale based on your traffic.</li>
+</ul>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>That's a high-level overview for deploying a Python application on Google Cloud using App Engine. Depending on your application needs, you might explore options like Google Cloud Run or Google Kubernetes Engine for more flexibility.</p>
 <hr />
 <h2 id="research-links">research/ links<a class="headerlink" href="#research-links" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code>* Spec-Kit: https://github.com/github/spec-kit
