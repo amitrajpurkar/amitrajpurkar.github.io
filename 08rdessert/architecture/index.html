@@ -1,0 +1,4461 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Prompting techniques, Spec-kit and more">
+      
+      
+        <meta name="author" content="Curious Developer">
+      
+      
+        <link rel="canonical" href="https://amitrajpurkar.github.io/08rdessert/architecture/">
+      
+      
+        <link rel="prev" href="../../07geoemerge/architecture/">
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>experiment 08 - Experiments with AI Code Assistant</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture-design-resource-desert-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Experiments with AI Code Assistant" class="md-header__button md-logo" aria-label="Experiments with AI Code Assistant" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7H5a2 2 0 0 0-2 2v8h2v-4h2v4h2V9a2 2 0 0 0-2-2m0 4H5V9h2m7-2h-4v10h2v-4h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2m0 4h-2V9h2m6 0v6h1v2h-4v-2h1V9h-1V7h4v2Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Experiments with AI Code Assistant
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              experiment 08
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/amitrajpurkar/sprboot_api_cktBrkr" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sprboot_api_cktBrkr
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../FirstPlan/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Legacy App Migration
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../First_Analysis/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Migration Work
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../experiment02/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Weather App 1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../experiment03/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Weather App 2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../experiment04/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Q&A App 1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../experiment05/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Q&A App 2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../shelve_20260211/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Journals
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Experiments with AI Code Assistant" class="md-nav__button md-logo" aria-label="Experiments with AI Code Assistant" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7H5a2 2 0 0 0-2 2v8h2v-4h2v4h2V9a2 2 0 0 0-2-2m0 4H5V9h2m7-2h-4v10h2v-4h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2m0 4h-2V9h2m6 0v6h1v2h-4v-2h1V9h-1V7h4v2Z"/></svg>
+
+    </a>
+    Experiments with AI Code Assistant
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/amitrajpurkar/sprboot_api_cktBrkr" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sprboot_api_cktBrkr
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FirstPlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Legacy App Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Migration Work
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Migration Work
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../First_Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First Analysis before starting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prompt_pad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Draft a Plan to work with AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prompt_dialog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interaction Dialog with AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI_Coding_Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PROJECT_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FULLSTACK_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Full Stack Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Migration Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Migration Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/H2_MIGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Database Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/RESILIENCE4J_MIGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resilience4j Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/GRADLE_9_MIGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gradle 9 Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/Upgrade_Plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrade Plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/Upgrade_CircuitBreaker_Plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Circuit Breaker Upgrade
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/Upgrade_H2_Plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Upgrade Plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Migration Status
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Migration Status
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/MIGRATION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migration Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/H2_MIGRATION_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Migration Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/TEST_MIGRATION_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Migration Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PHASE1_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phase 1 Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PHASE3_COMPLETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phase 3 Complete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/UPGRADE_PROGRESS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrade Progress
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/UPGRADE_STATUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrade Status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Implementation Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PRODUCT_API_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/FRONTEND_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/DOCKER_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PERFORMANCE_TESTING_IMPLEMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Performance Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/CIRCUIT_BREAKER_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ircuit Breaker Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Test Results
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Test Results
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/FINAL_TEST_RESULTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/FRONTEND_TEST_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PRODUCT_CONTROLLER_TESTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Controller Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/TEST_RESULTS_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Results Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/VALIDATION_TESTS_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code Reviews & Fixes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Code Reviews & Fixes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/code_review_01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First response
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/CODE_REVIEW_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Review Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/SENIOR_ARCHITECT_CODE_REVIEW.txt" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Senior Architect Review
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/CRITICAL-002-FIX-SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Critical Fix 002
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/CRITICAL-003-FIX-SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Critical Fix 003
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/h2-quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    H2 Database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/frontend-quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/docker-quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/gatling-quick-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gatling Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/RESILIENCE4J_QUICK_START/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resilience4j
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Additional Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/windsurfs_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Old Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/vercel_steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vercel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/ENHANCEMENTS_OCT_2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enhancements Oct 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/ANNOTATION_REFACTORING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotation Refactoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/RESILIENCE4J_IMPLEMENTATION_SUMMARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resilience4j Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/DOCKER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PERFORMANCE_TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Performance Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment01/PENDING_ACTIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pending Actions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../experiment02/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Weather App 1
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Weather App 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment02/prompt_interaction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment02/FEATURES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../experiment03/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Weather App 2
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Weather App 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment03/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment03/spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Specs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../experiment04/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Q&A App 1
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Q&A App 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment04/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment04/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../experiment05/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Q&A App 2
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Q&A App 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment05/prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experiment05/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architectures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Journals
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Journals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../shelve_20260211/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    asof 2026-02-11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AI_Code_Asst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Asst Research
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06restaurants/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    experiment 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07geoemerge/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    experiment 07
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    experiment 08
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    experiment 08
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. System Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-repository-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Repository Layout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-data-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Data Pipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Data Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-ingestion-srcingestionpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 1 — Ingestion (src/ingestion.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-cleaning-srccleaningpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 2 — Cleaning (src/cleaning.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3a-feature-engineering-merge-srcfeaturespy-merge_datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 3a — Feature Engineering: Merge (src/features.py → merge_datasets)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3b-feature-engineering-desert-score-srcfeaturespy-compute_desert_score" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 3b — Feature Engineering: Desert Score (src/features.py → compute_desert_score)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3c-health-outcome-correlation-srcfeaturespy-compute_health_outcome_correlation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 3c — Health Outcome Correlation (src/features.py → compute_health_outcome_correlation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-4-gap-closure-simulation-srcmodelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 4 — Gap-Closure Simulation (src/models.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-5-visualization-srcvisualizationpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 5 — Visualization (src/visualization.py)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-desert-score-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Desert Score Algorithm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Desert Score Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-normalise-supply-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1 — Normalise Supply Gaps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-compute-demand-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2 — Compute Demand Factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-aggregate-and-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3 — Aggregate and Scale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-rank-and-categorise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4 — Rank and Categorise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoring-weights-implied-by-the-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scoring Weights Implied by the Formula
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-gap-closure-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Gap-Closure Simulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Gap-Closure Simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-flask-presentation-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Flask Presentation Dashboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Flask Presentation Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background Execution Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-side-polling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-Side Polling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Template Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css-design-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Design System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-testing-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Testing Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Testing Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Philosophy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixture-strategy-testsconftestpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixture Strategy (tests/conftest.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualisation-test-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualisation Test Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-configuration-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Configuration Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Configuration Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-centralised-configuration-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Centralised Configuration Matters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Resolution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Technology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Design Principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Design Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-five-stage-pipeline-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Five-Stage Pipeline Separation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-no-global-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. No Global State
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iii-fail-fast-on-bad-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Fail Fast on Bad Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iv-transparent-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Transparent Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-raw-data-immutability" class="md-nav__link">
+    <span class="md-ellipsis">
+      V. Raw Data Immutability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-graceful-frontend-fallbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI. Graceful Frontend Fallbacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vii-test-first-synthetic-fixtures" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII. Test-First, Synthetic Fixtures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viii-single-source-of-truth-for-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIII. Single Source of Truth for Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-produced-artefacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Produced Artefacts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Produced Artefacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structured-data-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structured Data Outputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualisation-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualisation Outputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-presentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Presentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="architecture-design-resource-desert-analysis">Architecture &amp; Design: Resource Desert Analysis<a class="headerlink" href="#architecture-design-resource-desert-analysis" title="Permanent link">&para;</a></h1>
+<p><strong>Project</strong>: 2026 UNF CodeForAwhile Datathon — Problem Case 1
+<strong>Goal</strong>: Identify Jacksonville ZIP codes that qualify as "Resource Deserts" and propose data-driven interventions to bridge the gap between resource supply and community demand.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-system-overview">System Overview</a></li>
+<li><a href="#2-repository-layout">Repository Layout</a></li>
+<li><a href="#3-data-pipeline">Data Pipeline</a></li>
+<li><a href="#4-desert-score-algorithm">Desert Score Algorithm</a></li>
+<li><a href="#5-gap-closure-simulation">Gap-Closure Simulation</a></li>
+<li><a href="#6-flask-presentation-dashboard">Flask Presentation Dashboard</a></li>
+<li><a href="#7-testing-architecture">Testing Architecture</a></li>
+<li><a href="#8-configuration-design">Configuration Design</a></li>
+<li><a href="#9-technology-stack">Technology Stack</a></li>
+<li><a href="#10-design-principles">Design Principles</a></li>
+<li><a href="#11-produced-artefacts">Produced Artefacts</a></li>
+</ol>
+<hr />
+<h2 id="1-system-overview">1. System Overview<a class="headerlink" href="#1-system-overview" title="Permanent link">&para;</a></h2>
+<p>The system has two distinct runtime modes:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│                     ANALYSIS PIPELINE                       │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  (runs once, or on demand via the dashboard)                │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│                                                             │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  data/raw/  ──►  ingestion  ──►  cleaning  ──►  features    │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│               (9 CSVs + GeoJSON)                            │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│                                                             │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  features  ──►  models  ──►  visualization  ──►  outputs    │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│                                    │                        │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│                    reports/figures/*.png                    │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│                    reports/outputs/*.csv, *.json, *.html    │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>└─────────────────────────────────────────────────────────────┘
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                              │
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                  Pre-generated output files
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                              │
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                              ▼
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│                   PRESENTATION DASHBOARD                    │
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│  (Flask web app — reads pipeline outputs, serves judges)    │
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│                                                             │
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│  GET /          ──►  index.html (5-section single page)     │
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│  GET /figures/  ──►  serves PNG charts                      │
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│  GET /map       ──►  serves Folium choropleth HTML          │
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│  POST /api/regenerate  ──►  re-runs pipeline in background  │
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│  GET /api/regenerate/status  ──►  polling JSON              │
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
+<p>The pipeline and the dashboard are <strong>decoupled</strong>: the pipeline writes files to disk; the dashboard reads them. Neither calls the other directly except through the "Regenerate Data" background-thread mechanism.</p>
+<hr />
+<h2 id="2-repository-layout">2. Repository Layout<a class="headerlink" href="#2-repository-layout" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>prob1-resource-desert/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── app.py                          # Flask entry point — routes + background runner
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── src/                            # Importable pipeline modules (no notebooks here)
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   ├── config.py                   # ALL path constants + column name constants
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── ingestion.py                # Stage 1: load raw datasets
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── cleaning.py                 # Stage 2: standardise ZIPs, coerce dtypes
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   ├── features.py                 # Stage 3: merge, Desert Score, correlations
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   ├── models.py                   # Stage 4: gap-closure simulation
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   └── visualization.py            # Stage 5: charts + choropleth map
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>├── tests/
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│   ├── conftest.py                 # Synthetic fixture DataFrames (shared by all tests)
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│   ├── test_ingestion.py           # 6 unit tests
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   ├── test_cleaning.py            # 13 unit tests
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   ├── test_features.py            # 18 unit tests
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│   ├── test_models.py              # 13 unit tests
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│   ├── test_visualization.py       # 21 unit tests
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│   ├── test_app.py                 # 33 Flask route + loader tests
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│   └── e2e/
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>│       └── test_pipeline_e2e.py    # Full pipeline integration tests (@pytest.mark.e2e)
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>│
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>├── notebooks/
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>│   ├── resource_desert_analysis.ipynb   # Orchestration notebook (runs full pipeline)
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>│   └── eda/                             # 9 per-dataset exploratory notebooks
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>│       ├── eda_cdc_places.ipynb
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>│       ├── eda_census_demographics.ipynb
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>│       └── ...
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>│
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>├── data/
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>│   ├── raw/                        # Source files — NEVER modified
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>│   │   ├── CDCPlaces.csv
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>│   │   ├── Census-Demographics.csv
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>│   │   ├── Census-Housing&amp;Poverty.csv
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>│   │   ├── FEMA.csv
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>│   │   ├── HealthCareAccess.csv
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>│   │   ├── HealthCareWorkers.csv
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>│   │   ├── Parks.csv
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>│   │   ├── SocialVulnerabilityIndex.csv
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>│   │   ├── USDA-FoodAccess.csv
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>│   │   ├── Metadata.xlsx           # Column data dictionary
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>│   │   └── jacksonville_zctas.geojson   # Census TIGER/Line ZCTA boundaries
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>│   ├── processed/
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>│   │   └── merged_jacksonville.csv # Stage 3a output: 35 ZIPs × 28 cols
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>│   └── outputs/                    # (legacy; main outputs are in reports/)
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>│
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>├── reports/
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>│   ├── figures/                    # 7 PNG charts at ≥150 DPI
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>│   └── outputs/                    # 3 structured output files
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>│       ├── desert_scores.csv
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>│       ├── intervention_recommendations.json
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>│       └── resource_desert_map.html
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>│
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>├── webapp/
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>│   ├── templates/
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>│   │   └── index.html              # Single Jinja2 template (5-section layout)
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>│   └── static/
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>│       ├── css/style.css           # ~300 lines, hand-written, CSS custom properties
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>│       └── js/app.js               # Regenerate button + fetch/setTimeout polling
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>│
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>├── docs/
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>│   ├── architecture.md             # This file
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>│   └── project_presentation.html  # Standalone static presentation (base64 images inlined)
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>│
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>├── specs/                          # Feature specifications (speckit workflow)
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>│   ├── 001-resource-desert-analysis/
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>│   ├── 002-per-dataset-eda-notebooks/
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>│   └── 003-flask-presentation-dashboard/
+</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>│
+</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>├── requirements.txt
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>├── pytest.ini
+</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>└── CLAUDE.md                       # AI agent guidance + active technology stack
+</span></code></pre></div>
+<p><strong>Structural rules</strong>:
+- <code>src/</code> contains only importable Python modules — no scripts, no notebooks.
+- <code>notebooks/</code> is for exploration and orchestration only — no production logic lives there.
+- <code>data/raw/</code> is read-only; the pipeline never writes there.
+- All paths are defined as <code>pathlib.Path</code> constants in <code>src/config.py</code>.</p>
+<hr />
+<h2 id="3-data-pipeline">3. Data Pipeline<a class="headerlink" href="#3-data-pipeline" title="Permanent link">&para;</a></h2>
+<p>The pipeline follows a strict five-stage architecture. Each stage is implemented in a dedicated <code>src/</code> module and passes DataFrames explicitly — no global state, no shared mutable objects.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌──────────────┐    Dict[str, DataFrame]     ┌──────────────┐
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│ ingestion.py │ ──────────────────────────► │ cleaning.py  │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│              │     (9 raw datasets)        │              │
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│ load_raw_    │                             │ clean_       │
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│ datasets()   │                             │ datasets()   │
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>└──────────────┘                             └──────────────┘
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                                                     │
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>                                         Dict[str, DataFrame]
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>                                          (9 cleaned datasets)
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>                                                     │
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>                                                     ▼
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>                                           ┌──────────────┐
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>                                           │ features.py  │
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>                                           │              │
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>                                           │ merge_       │
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>                                           │ datasets()   │──► data/processed/
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>                                           │              │    merged_jacksonville.csv
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>                                           │ compute_     │
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>                                           │ desert_score │──► reports/outputs/
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>                                           │ ()           │    desert_scores.csv
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>                                           └──────────────┘
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>                                                     │
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>                                                DataFrame (35 ZIPs)
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>                                                     │
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>                                      ┌──────────────┴───────────────┐
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>                                      │                              │
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>                                      ▼                              ▼
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>                              ┌──────────────┐             ┌──────────────────┐
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>                              │  models.py   │             │ visualization.py │
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>                              │              │             │                  │
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>                              │ run_gap_     │             │ plot_desert_     │
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>                              │ closure_     │             │ scores_bar_chart │
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>                              │ simulation() │             │                  │
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>                              │              │             │ create_choropleth│
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>                              │ rank_        │             │ _map()           │
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>                              │ interventions│             │                  │
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>                              │ ()           │             │ plot_preventative│
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>                              └──────────────┘             │ _vs_outcome()    │
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>                                      │                    │                  │
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>                               JSON output                 │ plot_intervention│
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>                              reports/outputs/             │ _impact_heatmap()│
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>                              intervention_                │                  │
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>                              recommendations.json         │ plot_category_   │
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>                                                           │ view() × 4       │
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>                                                           └──────────────────┘
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>                                                                    │
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>                                                            7 PNGs + 1 HTML
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>                                                            reports/figures/
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>                                                            reports/outputs/
+</span></code></pre></div>
+<h3 id="stage-1-ingestion-srcingestionpy">Stage 1 — Ingestion (<code>src/ingestion.py</code>)<a class="headerlink" href="#stage-1-ingestion-srcingestionpy" title="Permanent link">&para;</a></h3>
+<p><strong>Entry point</strong>: <code>load_raw_datasets() → Dict[str, DataFrame]</code></p>
+<p>Loads all 9 source CSV files and 1 XLSX metadata file from <code>data/raw/</code>. Validates existence and non-empty shape before returning. Raises <code>FileNotFoundError</code> immediately if any file is missing — fail-fast design prevents silent pipeline failures downstream.</p>
+<p>Each dataset is returned under a stable string key (e.g., <code>"cdc_places"</code>, <code>"census_demographics"</code>) defined as constants in <code>config.py</code>. The returned DataFrames are <strong>raw and unmodified</strong> — no type coercion, no filtering.</p>
+<p><strong>Data shape at exit</strong>: 9 DataFrames, each 37 rows × varying column counts (6–28 columns), all with a <code>"feature label"</code> column that encodes the ZIP code.</p>
+<hr />
+<h3 id="stage-2-cleaning-srccleaningpy">Stage 2 — Cleaning (<code>src/cleaning.py</code>)<a class="headerlink" href="#stage-2-cleaning-srccleaningpy" title="Permanent link">&para;</a></h3>
+<p><strong>Entry point</strong>: <code>clean_datasets(raw: Dict[str, DataFrame]) → Dict[str, DataFrame]</code></p>
+<p>Applies three transformations to every dataset (except the metadata dictionary):</p>
+<ol>
+<li>
+<p><strong>ZIP standardisation</strong> — Extracts the 5-digit ZIP code from the <code>"feature label"</code> column using a regex (<code>\d{5}</code>), zero-pads where needed, and stores it as <code>"zip_code"</code>. The original feature label is retained.</p>
+</li>
+<li>
+<p><strong>Numeric coercion</strong> — Replaces known NA-like strings (<code>"N/A"</code>, <code>"-"</code>, <code>"(null)"</code>) with <code>NaN</code>, then attempts <code>pd.to_numeric(..., errors='coerce')</code> on every column. Columns that cannot be numeric are left as-is.</p>
+</li>
+<li>
+<p><strong>Duplicate dropping</strong> — Deduplicates on <code>zip_code</code>, keeping the first occurrence. Logs the count of dropped rows before each drop.</p>
+</li>
+</ol>
+<p>All transformations are transparent — before/after row counts are logged. No silent data loss.</p>
+<p><strong>Data shape at exit</strong>: Same 9 keys, each DataFrame now has a clean <code>zip_code</code> column and consistent numeric dtypes.</p>
+<hr />
+<h3 id="stage-3a-feature-engineering-merge-srcfeaturespy-merge_datasets">Stage 3a — Feature Engineering: Merge (<code>src/features.py</code> → <code>merge_datasets</code>)<a class="headerlink" href="#stage-3a-feature-engineering-merge-srcfeaturespy-merge_datasets" title="Permanent link">&para;</a></h3>
+<p>Outer-joins all 9 cleaned DataFrames on <code>zip_code</code>. Filters out ZIPs with zero or missing population (removes 2 non-residential records). Derives three rate columns:</p>
+<table>
+<thead>
+<tr>
+<th>Derived Column</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>poverty_rate</code></td>
+<td><code>poverty_count / total_population</code> (clipped to [0, 1])</td>
+</tr>
+<tr>
+<td><code>uninsured_rate</code></td>
+<td><code>uninsured_count / total_population</code> (clipped to [0, 1])</td>
+</tr>
+<tr>
+<td><code>food_low_access_pct</code></td>
+<td><code>food_low_access_20_mile / total_population</code> (clipped to [0, 1])</td>
+</tr>
+</tbody>
+</table>
+<p>Null supply metrics (e.g., <code>primary_care_ratio</code>) are imputed with the column median. The final merged DataFrame (35 rows × 28 columns) is saved to <code>data/processed/merged_jacksonville.csv</code>.</p>
+<hr />
+<h3 id="stage-3b-feature-engineering-desert-score-srcfeaturespy-compute_desert_score">Stage 3b — Feature Engineering: Desert Score (<code>src/features.py</code> → <code>compute_desert_score</code>)<a class="headerlink" href="#stage-3b-feature-engineering-desert-score-srcfeaturespy-compute_desert_score" title="Permanent link">&para;</a></h3>
+<p>See <a href="#4-desert-score-algorithm">Section 4</a> for the full algorithm.</p>
+<p><strong>Output</strong>: <code>reports/outputs/desert_scores.csv</code> — 35 rows × 11 columns.</p>
+<hr />
+<h3 id="stage-3c-health-outcome-correlation-srcfeaturespy-compute_health_outcome_correlation">Stage 3c — Health Outcome Correlation (<code>src/features.py</code> → <code>compute_health_outcome_correlation</code>)<a class="headerlink" href="#stage-3c-health-outcome-correlation-srcfeaturespy-compute_health_outcome_correlation" title="Permanent link">&para;</a></h3>
+<p>Computes 8 Pearson correlations between 4 preventative-asset metrics and 2 health outcome metrics:</p>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Outcomes tested</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary care ratio (providers per capita)</td>
+<td>Poor mental health rate, Obesity rate</td>
+</tr>
+<tr>
+<td>Food low access %</td>
+<td>Poor mental health rate, Obesity rate</td>
+</tr>
+<tr>
+<td>Park coverage %</td>
+<td>Poor mental health rate, Obesity rate</td>
+</tr>
+<tr>
+<td>Uninsured rate</td>
+<td>Poor mental health rate, Obesity rate</td>
+</tr>
+</tbody>
+</table>
+<p>Returns a long-format DataFrame <code>[asset, outcome, pearson_r]</code>. This powers the scatter plot in the Observations section and the strongest-correlation callout.</p>
+<hr />
+<h3 id="stage-4-gap-closure-simulation-srcmodelspy">Stage 4 — Gap-Closure Simulation (<code>src/models.py</code>)<a class="headerlink" href="#stage-4-gap-closure-simulation-srcmodelspy" title="Permanent link">&para;</a></h3>
+<p>See <a href="#5-gap-closure-simulation">Section 5</a> for the full algorithm.</p>
+<p><strong>Output</strong>: <code>reports/outputs/intervention_recommendations.json</code> — 20 records.</p>
+<hr />
+<h3 id="stage-5-visualization-srcvisualizationpy">Stage 5 — Visualization (<code>src/visualization.py</code>)<a class="headerlink" href="#stage-5-visualization-srcvisualizationpy" title="Permanent link">&para;</a></h3>
+<p>Generates 7 static figures and 1 interactive Folium HTML map. All figures are saved at 150 DPI via <code>fig.savefig(path, dpi=150)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Output file</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plot_desert_scores_bar_chart()</code></td>
+<td><code>reports/figures/desert_scores_bar_chart.png</code></td>
+<td>Horizontal bar chart, top-10 ZIPs by Desert Score, RdYlGn_r colour gradient</td>
+</tr>
+<tr>
+<td><code>create_choropleth_map()</code></td>
+<td><code>reports/outputs/resource_desert_map.html</code></td>
+<td>Interactive Folium map, ZCTA5 boundaries from Jacksonville GeoJSON, ZIP hover tooltip</td>
+</tr>
+<tr>
+<td><code>plot_preventative_vs_outcome()</code></td>
+<td><code>reports/figures/preventative_asset_vs_health_outcome.png</code></td>
+<td>Scatter + regression line (seaborn.regplot), annotates top/bottom 3 ZIPs</td>
+</tr>
+<tr>
+<td><code>plot_intervention_impact_heatmap()</code></td>
+<td><code>reports/figures/intervention_impact_heatmap.png</code></td>
+<td>Heatmap (ZIP × resource type), % improvement values, ★ marks highest-impact cell</td>
+</tr>
+<tr>
+<td><code>plot_category_view()</code> × 4</td>
+<td><code>reports/figures/category_{name}_view.png</code></td>
+<td>Side-by-side bars (supply gap vs poverty rate), one chart per resource category</td>
+</tr>
+</tbody>
+</table>
+<p>The choropleth map uses the Census TIGER/Line 2022 ZCTA5 GeoJSON file filtered to Jacksonville-area ZCTAs (prefix <code>320</code> or <code>322</code>). It is served by the Flask dashboard via a dedicated <code>/map</code> route and embedded as an iframe.</p>
+<hr />
+<h2 id="4-desert-score-algorithm">4. Desert Score Algorithm<a class="headerlink" href="#4-desert-score-algorithm" title="Permanent link">&para;</a></h2>
+<p>The Desert Score is a demand-weighted composite deprivation index ranging from 0 (no deprivation) to 100 (maximum deprivation).</p>
+<h3 id="step-1-normalise-supply-gaps">Step 1 — Normalise Supply Gaps<a class="headerlink" href="#step-1-normalise-supply-gaps" title="Permanent link">&para;</a></h3>
+<p>Each supply gap is normalised to [0, 1] via min-max scaling. A gap of 1.0 means the ZIP is the most deprived on that dimension; 0.0 means the least.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>supply_gap_healthcare = 1 - minmax(primary_care_ratio)
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>supply_gap_food       = minmax(food_low_access_pct)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>supply_gap_parks      = 1 - minmax(park_coverage_pct)
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>supply_gap_insurance  = minmax(uninsured_rate)
+</span></code></pre></div>
+<p>Note: healthcare and parks are inverted because higher provider ratios / park coverage = better access.</p>
+<h3 id="step-2-compute-demand-factor">Step 2 — Compute Demand Factor<a class="headerlink" href="#step-2-compute-demand-factor" title="Permanent link">&para;</a></h3>
+<p>The demand factor amplifies the score for ZIPs where the population is both poor and unhealthy:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>disease_burden  = (poor_mental_health_rate + obesity_rate) / 2
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>demand_factor   = minmax(poverty_rate × disease_burden)
+</span></code></pre></div>
+<p>A ZIP with both high poverty and high disease burden gets a demand factor close to 1.</p>
+<h3 id="step-3-aggregate-and-scale">Step 3 — Aggregate and Scale<a class="headerlink" href="#step-3-aggregate-and-scale" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>raw_score    = sum(supply_gap_i) × demand_factor   [weighted supply gap]
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>desert_score = minmax(raw_score) × 100             [scaled to 0–100]
+</span></code></pre></div>
+<p>The outer min-max scales all ZIP scores relative to each other. A score of 100 is the most deprived ZIP in Jacksonville; a score of 0 is the least.</p>
+<h3 id="step-4-rank-and-categorise">Step 4 — Rank and Categorise<a class="headerlink" href="#step-4-rank-and-categorise" title="Permanent link">&para;</a></h3>
+<p>ZIPs are ranked by <code>desert_score</code> descending (rank 1 = most deprived). Ties broken by <code>poverty_rate</code> descending. The <code>top_gap_category</code> attribute identifies which single supply gap is largest for that ZIP:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>top_gap_category = argmax(supply_gap_healthcare, supply_gap_food,
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                          supply_gap_parks, supply_gap_insurance)
+</span></code></pre></div>
+<h3 id="scoring-weights-implied-by-the-formula">Scoring Weights Implied by the Formula<a class="headerlink" href="#scoring-weights-implied-by-the-formula" title="Permanent link">&para;</a></h3>
+<p>The formula applies equal weights to all four supply gap components. Demand scaling does not affect the relative ranking of resource categories within a ZIP — it scales the overall deprivation up or down based on how much that community needs the resources.</p>
+<hr />
+<h2 id="5-gap-closure-simulation">5. Gap-Closure Simulation<a class="headerlink" href="#5-gap-closure-simulation" title="Permanent link">&para;</a></h2>
+<p>The simulation answers: <em>"If we added one type of resource to a high-need ZIP, how much would its Desert Score improve?"</em></p>
+<h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Select candidates</strong>: Identify the top-5 most deprived ZIPs (desert_rank 1–5).</p>
+</li>
+<li>
+<p><strong>Define targets</strong>: For each resource type, compute the 25<sup>th</sup>-percentile gap value across all 35 ZIPs. This represents a realistic improvement target — 75% of Jacksonville ZIPs already do better than this.</p>
+</li>
+<li>
+<p><strong>Simulate each intervention</strong> (5 ZIPs × 4 resource types = 20 scenarios):</p>
+</li>
+<li>For the target resource type, replace the ZIP's current gap value with the 25<sup>th</sup>-percentile target (only if it improves the score — never worsens it).</li>
+<li>Recompute the raw score: <code>simulated_raw = new_supply_gap_sum × demand_factor</code></li>
+<li>Project the score improvement proportionally: <code>simulated_score = current_score × (simulated_raw / current_raw)</code></li>
+<li>
+<p>Compute deltas: <code>score_improvement = current - simulated</code>, <code>pct_improvement = improvement / current × 100</code></p>
+</li>
+<li>
+<p><strong>Rank interventions</strong>: Sort all 20 rows by <code>score_improvement</code> descending. Flag the single highest-impact intervention with <code>is_highest_impact = True</code>.</p>
+</li>
+</ol>
+<h3 id="output-format">Output Format<a class="headerlink" href="#output-format" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">[</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;zip_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32254&quot;</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nt">&quot;resource_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;insurance_outreach&quot;</span><span class="p">,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">&quot;current_desert_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">96.4</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&quot;simulated_desert_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">82.6</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nt">&quot;score_improvement&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">13.8</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nt">&quot;pct_improvement&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">14.3</span><span class="p">,</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nt">&quot;population_impacted&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22150</span><span class="p">,</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="nt">&quot;is_highest_impact&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="6-flask-presentation-dashboard">6. Flask Presentation Dashboard<a class="headerlink" href="#6-flask-presentation-dashboard" title="Permanent link">&para;</a></h2>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<p>The dashboard is a single-file Flask application (<code>app.py</code>) with no database. It is stateless except for the background notebook execution tracker.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Browser
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  │
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  │  GET /
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  │  ──────────────────────────────────────────────────────────►  app.py:index()
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  │                                                                    │
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  │                                              load_desert_scores()  │
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  │                                             load_interventions()   │
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  │                                              build_chart_list()    │
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>  │                                                                    │
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>  │  ◄──────────────────────────────────────────  render_template()
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>  │               index.html (Jinja2)
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  │               ├── desert_scores (list[dict])
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  │               ├── interventions (list[dict])
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>  │               ├── best_intervention (dict|None)
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>  │               ├── charts (list[dict] with .missing flags)
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>  │               ├── map_exists (bool)
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>  │               ├── run_status (str)
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>  │               └── run_message (str)
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>  │
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>  │  GET /figures/&lt;filename&gt;
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>  │  ──────────────────────►  send_from_directory(REPORTS_FIGURES_DIR, filename)
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>  │
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>  │  GET /map
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>  │  ──────────────────────►  send_from_directory(REPORTS_OUTPUTS_DIR, &quot;resource_desert_map.html&quot;)
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>  │
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>  │  POST /api/regenerate
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>  │  ──────────────────────►  Spawn threading.Thread(_run_notebook_thread)  ──►  202
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>  │                           (409 if already running)
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>  │
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>  │  GET /api/regenerate/status
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>  │  ──────────────────────►  { &quot;status&quot;: &quot;...&quot;, &quot;message&quot;: &quot;...&quot; }   (lock-protected read)
+</span></code></pre></div>
+<h3 id="background-execution-model">Background Execution Model<a class="headerlink" href="#background-execution-model" title="Permanent link">&para;</a></h3>
+<p>The "Regenerate Data" feature executes the analysis notebook as a background subprocess. Thread safety is enforced via a module-level <code>threading.Lock</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">_run_state</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;idle&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">_run_notebook_thread</span><span class="p">():</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="k">with</span> <span class="n">_lock</span><span class="p">:</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="n">_run_state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;running&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="s2">&quot;jupyter&quot;</span><span class="p">,</span> <span class="s2">&quot;nbconvert&quot;</span><span class="p">,</span> <span class="s2">&quot;--to&quot;</span><span class="p">,</span> <span class="s2">&quot;notebook&quot;</span><span class="p">,</span> <span class="s2">&quot;--execute&quot;</span><span class="p">,</span> <span class="s2">&quot;--inplace&quot;</span><span class="p">,</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="s2">&quot;--ExecutePreprocessor.kernel_name=prob1-resource-desert&quot;</span><span class="p">,</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="s2">&quot;--ExecutePreprocessor.timeout=600&quot;</span><span class="p">,</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="s2">&quot;notebooks/resource_desert_analysis.ipynb&quot;</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>    <span class="k">with</span> <span class="n">_lock</span><span class="p">:</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>            <span class="n">_run_state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;complete&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>            <span class="n">_run_state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">[</span><span class="o">-</span><span class="mi">500</span><span class="p">:])</span>
+</span></code></pre></div>
+<p><strong>State machine</strong>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>idle ──[POST /api/regenerate]──► running ──[returncode == 0]──► complete
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                                         └─[returncode != 0]──► error
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>complete/error ──[POST /api/regenerate]──► running  (retry allowed)
+</span></code></pre></div></p>
+<p><strong>Duplicate-run prevention</strong>: <code>POST /api/regenerate</code> checks <code>status == "running"</code> before spawning — returns 409 if already in progress.</p>
+<h3 id="client-side-polling">Client-Side Polling<a class="headerlink" href="#client-side-polling" title="Permanent link">&para;</a></h3>
+<p>The browser polls for notebook completion using a recursive <code>setTimeout</code> pattern (not <code>setInterval</code>) to avoid request queue buildup:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">pollStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/api/regenerate/status&quot;</span><span class="p">)</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">      </span><span class="nx">updateUI</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;running&quot;</span><span class="p">)</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">pollStatus</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="p">})</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">pollStatus</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">));</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>On <code>complete</code>: page reloads automatically so all sections refresh with new data.
+On <code>error</code>: error banner appears with the last 500 characters of notebook <code>stderr</code>.</p>
+<h3 id="template-variables">Template Variables<a class="headerlink" href="#template-variables" title="Permanent link">&para;</a></h3>
+<p>All data is injected server-side by the <code>index()</code> route. There is no client-side data fetching for page content:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>desert_scores</code></td>
+<td><code>list[dict]</code></td>
+<td>Top-10 rows from <code>desert_scores.csv</code></td>
+</tr>
+<tr>
+<td><code>interventions</code></td>
+<td><code>list[dict]</code></td>
+<td>All 20 rows from <code>intervention_recommendations.json</code>, sorted by impact</td>
+</tr>
+<tr>
+<td><code>best_intervention</code></td>
+<td><code>dict \| None</code></td>
+<td>The single row with <code>is_highest_impact == true</code></td>
+</tr>
+<tr>
+<td><code>charts</code></td>
+<td><code>list[dict]</code></td>
+<td>7 chart descriptors with <code>missing: bool</code> flag per PNG</td>
+</tr>
+<tr>
+<td><code>map_exists</code></td>
+<td><code>bool</code></td>
+<td>Whether <code>resource_desert_map.html</code> exists on disk</td>
+</tr>
+<tr>
+<td><code>run_status</code></td>
+<td><code>str</code></td>
+<td>Current notebook run state from <code>_run_state</code> (lock-protected)</td>
+</tr>
+<tr>
+<td><code>run_message</code></td>
+<td><code>str</code></td>
+<td>Last 500 chars of <code>stderr</code> on failure; empty otherwise</td>
+</tr>
+</tbody>
+</table>
+<p>Missing files produce graceful placeholders in the template — no errors propagate to the browser. Each section independently checks its data and shows a "not yet generated" message when needed.</p>
+<h3 id="css-design-system">CSS Design System<a class="headerlink" href="#css-design-system" title="Permanent link">&para;</a></h3>
+<p>Hand-written CSS using custom properties (no framework):</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Value</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--color-navy</code></td>
+<td><code>#0d1b2a</code></td>
+<td>Page background, nav bar, table headers</td>
+</tr>
+<tr>
+<td><code>--color-accent-red</code></td>
+<td><code>#d73027</code></td>
+<td>High-deprivation indicator, problem statement accent</td>
+</tr>
+<tr>
+<td><code>--color-accent-yellow</code></td>
+<td><code>#fee090</code></td>
+<td>Mid-deprivation indicator, category titles</td>
+</tr>
+<tr>
+<td><code>--color-accent-green</code></td>
+<td><code>#1a9850</code></td>
+<td>Low-deprivation indicator, nav links, success states</td>
+</tr>
+<tr>
+<td><code>--color-highlight</code></td>
+<td><code>#ffe066</code></td>
+<td>Best-intervention call-out card background</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-testing-architecture">7. Testing Architecture<a class="headerlink" href="#7-testing-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Unit tests</strong>: Use synthetic fixture DataFrames only. Never read from <code>data/raw/</code>. Fast, deterministic, run in milliseconds.</li>
+<li><strong>E2E tests</strong>: Tagged <code>@pytest.mark.e2e</code>. Read real source files. Run the full pipeline end-to-end. Excluded from the default <code>pytest</code> invocation.</li>
+<li><strong>Coverage gate</strong>: Minimum 70% across <code>src/</code> enforced by <code>pytest --cov-fail-under=70</code>.</li>
+</ul>
+<h3 id="test-distribution">Test Distribution<a class="headerlink" href="#test-distribution" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Tests</th>
+<th>What It Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_ingestion.py</code></td>
+<td>6</td>
+<td>File existence checks, shape validation, FileNotFoundError on missing files</td>
+</tr>
+<tr>
+<td><code>test_cleaning.py</code></td>
+<td>13</td>
+<td>ZIP extraction regex, numeric coercion, NA-string handling, duplicate dropping</td>
+</tr>
+<tr>
+<td><code>test_features.py</code></td>
+<td>18</td>
+<td><code>_minmax()</code> edge cases, merge correctness, Desert Score range [0, 100], correlation computation</td>
+</tr>
+<tr>
+<td><code>test_models.py</code></td>
+<td>13</td>
+<td>25<sup>th</sup>-percentile target logic, score never worsens, <code>is_highest_impact</code> exactly one True, intervention ranking</td>
+</tr>
+<tr>
+<td><code>test_visualization.py</code></td>
+<td>21</td>
+<td>PNG creation, DPI≥150, figure axis labels, Folium map HTML output, missing GeoJSON handling</td>
+</tr>
+<tr>
+<td><code>test_app.py</code></td>
+<td>33</td>
+<td>All 5 Flask route contracts, data loader success/failure paths, background thread state machine</td>
+</tr>
+<tr>
+<td><code>e2e/test_pipeline_e2e.py</code></td>
+<td>—</td>
+<td>Full pipeline from raw CSVs to final output files; asserts output shapes, ZIP code format, score range, intervention count</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fixture-strategy-testsconftestpy">Fixture Strategy (<code>tests/conftest.py</code>)<a class="headerlink" href="#fixture-strategy-testsconftestpy" title="Permanent link">&para;</a></h3>
+<p>All unit tests share synthetic fixtures defined in <code>conftest.py</code>. These are minimal DataFrames (5 rows) with realistic column names matching the actual raw data:</p>
+<ul>
+<li><code>sample_census_demo_df</code> — 5 ZIP codes with population columns</li>
+<li><code>sample_cdc_df</code> — 5 ZIP codes with disease prevalence columns</li>
+<li><code>sample_merged_df</code> — Pre-merged DataFrame with all derived columns populated</li>
+<li><code>sample_desert_scores_df</code> — 5 ZIPs with computed <code>desert_score</code>, <code>desert_rank</code>, all <code>supply_gap_*</code></li>
+<li><code>all_raw_datasets</code> — Combines all dataset fixtures into the Dict structure expected by <code>clean_datasets()</code></li>
+</ul>
+<p>This separation means unit tests have zero dependency on the availability of <code>data/raw/</code> files — they run identically on CI and locally.</p>
+<h3 id="visualisation-test-pattern">Visualisation Test Pattern<a class="headerlink" href="#visualisation-test-pattern" title="Permanent link">&para;</a></h3>
+<p>Testing matplotlib figures requires special care because <code>Figure.savefig</code> is a bound method:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># To capture path and DPI only (most tests):</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">_CaptureSavefig</span><span class="p">:</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dpi&quot;</span><span class="p">)</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="s2">&quot;savefig&quot;</span><span class="p">,</span> <span class="n">_CaptureSavefig</span><span class="p">()):</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="n">plot_desert_scores_bar_chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="c1"># To inspect axis properties (requires autospec=True to bind self):</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="s2">&quot;savefig&quot;</span><span class="p">,</span> <span class="n">autospec</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">mock_sf</span><span class="p">:</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    <span class="n">plot_desert_scores_bar_chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">mock_sf</span><span class="o">.</span><span class="n">call_args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># self is first arg with autospec</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="k">assert</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_title</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span>
+</span></code></pre></div>
+<hr />
+<h2 id="8-configuration-design">8. Configuration Design<a class="headerlink" href="#8-configuration-design" title="Permanent link">&para;</a></h2>
+<p>All project-level paths and column name constants live in <code>src/config.py</code>. No file path strings and no raw CSV column names appear anywhere else in the codebase.</p>
+<h3 id="why-centralised-configuration-matters">Why Centralised Configuration Matters<a class="headerlink" href="#why-centralised-configuration-matters" title="Permanent link">&para;</a></h3>
+<p>The source CSVs use verbose column headers (e.g., <code>"Total Population (2020-2024)"</code>, <code>"Primary Care Physician Ratio (2025)"</code>). Repeating these strings across modules would make renaming or updating data sources extremely fragile. Instead, every reference goes through a constant:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># config.py</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">COL_TOTAL_POPULATION</span> <span class="o">=</span> <span class="s2">&quot;Total Population (2020-2024)&quot;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">COL_PRIMARY_CARE_RATIO</span> <span class="o">=</span> <span class="s2">&quot;Primary Care Physician Ratio (2025)&quot;</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># features.py — uses the constant, never the string</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">COL_POVERTY_RATE</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">COL_POVERTY_COUNT</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">COL_TOTAL_POPULATION</span><span class="p">]</span>
+</span></code></pre></div>
+<p>If a data source changes its column headers, only <code>config.py</code> needs to be updated.</p>
+<h3 id="path-resolution">Path Resolution<a class="headerlink" href="#path-resolution" title="Permanent link">&para;</a></h3>
+<p>All paths resolve relative to the <code>config.py</code> file location, which is <code>src/</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>   <span class="c1"># → project root</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">DATA_RAW_DIR</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;raw&quot;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">REPORTS_FIGURES_DIR</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">&quot;reports&quot;</span> <span class="o">/</span> <span class="s2">&quot;figures&quot;</span>
+</span></code></pre></div>
+<p>This makes the project relocatable — it works from any absolute path on any machine.</p>
+<hr />
+<h2 id="9-technology-stack">9. Technology Stack<a class="headerlink" href="#9-technology-stack" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Library</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Language</td>
+<td>Python</td>
+<td>≥ 3.11</td>
+<td>All pipeline + web code</td>
+</tr>
+<tr>
+<td>Data manipulation</td>
+<td>pandas</td>
+<td>≥ 2.0</td>
+<td>DataFrames throughout the pipeline</td>
+</tr>
+<tr>
+<td>Numerical</td>
+<td>numpy</td>
+<td>≥ 1.26</td>
+<td>Min-max normalisation, array ops</td>
+</tr>
+<tr>
+<td>Machine learning</td>
+<td>scikit-learn</td>
+<td>≥ 1.4</td>
+<td>(available; not used in current pipeline)</td>
+</tr>
+<tr>
+<td>Visualisation</td>
+<td>matplotlib</td>
+<td>≥ 3.8</td>
+<td>Bar charts, scatter plots, heatmap</td>
+</tr>
+<tr>
+<td>Visualisation</td>
+<td>seaborn</td>
+<td>≥ 0.13</td>
+<td>Regression scatter plot (<code>regplot</code>)</td>
+</tr>
+<tr>
+<td>Interactive map</td>
+<td>folium</td>
+<td>≥ 0.15</td>
+<td>Choropleth HTML map from GeoJSON</td>
+</tr>
+<tr>
+<td>Geospatial</td>
+<td>geopandas</td>
+<td>≥ 0.14</td>
+<td>GeoJSON download + filtering for Jacksonville ZCTAs</td>
+</tr>
+<tr>
+<td>Notebook execution</td>
+<td>jupyter / nbconvert</td>
+<td>≥ 1.0 / ≥ 7.0</td>
+<td>Run pipeline via notebook; Flask background trigger</td>
+</tr>
+<tr>
+<td>Web framework</td>
+<td>Flask</td>
+<td>≥ 3.0</td>
+<td>Presentation dashboard</td>
+</tr>
+<tr>
+<td>File serving</td>
+<td>werkzeug (Flask dep.)</td>
+<td>—</td>
+<td><code>send_from_directory</code> for PNGs and choropleth HTML</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>pytest</td>
+<td>≥ 8.0</td>
+<td>Test runner</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>pytest-cov</td>
+<td>≥ 4.1</td>
+<td>Coverage measurement and gate</td>
+</tr>
+<tr>
+<td>Linting</td>
+<td>ruff</td>
+<td>≥ 0.4</td>
+<td>Import order, unused variables, style checks</td>
+</tr>
+<tr>
+<td>Formatting</td>
+<td>black</td>
+<td>≥ 24.0</td>
+<td>Deterministic code formatting</td>
+</tr>
+<tr>
+<td>Spreadsheet reads</td>
+<td>openpyxl</td>
+<td>≥ 3.1</td>
+<td>Load <code>Metadata.xlsx</code> data dictionary</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-design-principles">10. Design Principles<a class="headerlink" href="#10-design-principles" title="Permanent link">&para;</a></h2>
+<h3 id="i-five-stage-pipeline-separation">I. Five-Stage Pipeline Separation<a class="headerlink" href="#i-five-stage-pipeline-separation" title="Permanent link">&para;</a></h3>
+<p>Each stage (<code>ingestion → cleaning → features → models → visualization</code>) is a separate module with a single public entry point that takes DataFrames as input and returns DataFrames as output. No stage imports from another stage's module directly. The orchestration notebook calls them in sequence.</p>
+<p>This separation makes each stage independently testable, replaceable, and debuggable.</p>
+<h3 id="ii-no-global-state">II. No Global State<a class="headerlink" href="#ii-no-global-state" title="Permanent link">&para;</a></h3>
+<p>DataFrames and configuration are passed as explicit function arguments. The only module-level mutable state in the entire codebase is <code>_run_state</code> in <code>app.py</code>, which is guarded by a <code>threading.Lock</code> and only ever written from within <code>_run_notebook_thread()</code>.</p>
+<h3 id="iii-fail-fast-on-bad-data">III. Fail Fast on Bad Data<a class="headerlink" href="#iii-fail-fast-on-bad-data" title="Permanent link">&para;</a></h3>
+<p>Ingestion raises <code>FileNotFoundError</code> immediately if any source file is missing. Cleaning logs and raises on unexpected null patterns in critical columns. This prevents silent garbage-in/garbage-out scenarios.</p>
+<h3 id="iv-transparent-logging">IV. Transparent Logging<a class="headerlink" href="#iv-transparent-logging" title="Permanent link">&para;</a></h3>
+<p>Every transformation that changes the shape of a DataFrame logs the before and after record counts. Every row drop (deduplication, population filter) logs the count and reason. The <code>get_logger()</code> utility in <code>config.py</code> ensures a consistent log format across all modules.</p>
+<h3 id="v-raw-data-immutability">V. Raw Data Immutability<a class="headerlink" href="#v-raw-data-immutability" title="Permanent link">&para;</a></h3>
+<p>Files under <code>data/raw/</code> are never opened for writing. The <code>.gitignore</code> excludes large binary files but the directory structure is committed. All transformations write to <code>data/processed/</code> or <code>reports/</code>.</p>
+<h3 id="vi-graceful-frontend-fallbacks">VI. Graceful Frontend Fallbacks<a class="headerlink" href="#vi-graceful-frontend-fallbacks" title="Permanent link">&para;</a></h3>
+<p>The Flask dashboard never lets a missing file cause an unhandled exception or a blank page. Each data loader returns an empty list on failure; the Jinja2 template renders descriptive placeholder <code>&lt;div&gt;</code> elements with a "Regenerate Data" prompt wherever data is missing.</p>
+<h3 id="vii-test-first-synthetic-fixtures">VII. Test-First, Synthetic Fixtures<a class="headerlink" href="#vii-test-first-synthetic-fixtures" title="Permanent link">&para;</a></h3>
+<p>Unit tests are written before implementations. All unit tests use 5-row synthetic DataFrames that exercise the same column contracts as the real data. This keeps the test suite fast (sub-second) and independent of real data availability.</p>
+<h3 id="viii-single-source-of-truth-for-configuration">VIII. Single Source of Truth for Configuration<a class="headerlink" href="#viii-single-source-of-truth-for-configuration" title="Permanent link">&para;</a></h3>
+<p>No magic strings outside <code>config.py</code>. Column names, file paths, dataset keys, and output file names are all defined once. The application, tests, and notebook all import from <code>config.py</code> — never from each other.</p>
+<hr />
+<h2 id="11-produced-artefacts">11. Produced Artefacts<a class="headerlink" href="#11-produced-artefacts" title="Permanent link">&para;</a></h2>
+<p>After a full pipeline run, the following files exist on disk:</p>
+<h3 id="structured-data-outputs">Structured Data Outputs<a class="headerlink" href="#structured-data-outputs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Rows</th>
+<th>Key Columns</th>
+<th>Consumer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data/processed/merged_jacksonville.csv</code></td>
+<td>35</td>
+<td>zip_code + 28 cols (all raw + derived rates)</td>
+<td>Debugging, downstream analysis</td>
+</tr>
+<tr>
+<td><code>reports/outputs/desert_scores.csv</code></td>
+<td>35</td>
+<td>zip_code, desert_score (0–100), desert_rank, supply_gap_* (×4), top_gap_category</td>
+<td>Flask dashboard top-10 table</td>
+</tr>
+<tr>
+<td><code>reports/outputs/intervention_recommendations.json</code></td>
+<td>20</td>
+<td>zip_code, resource_type, score_improvement, pct_improvement, is_highest_impact</td>
+<td>Flask dashboard recommendations section</td>
+</tr>
+</tbody>
+</table>
+<h3 id="visualisation-outputs">Visualisation Outputs<a class="headerlink" href="#visualisation-outputs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Size</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reports/figures/desert_scores_bar_chart.png</code></td>
+<td>~61 KB</td>
+<td>Horizontal bars, top-10 ZIPs by Desert Score, red→green colour gradient</td>
+</tr>
+<tr>
+<td><code>reports/figures/preventative_asset_vs_health_outcome.png</code></td>
+<td>~89 KB</td>
+<td>Scatter + OLS regression line, preventative assets vs health outcomes</td>
+</tr>
+<tr>
+<td><code>reports/figures/intervention_impact_heatmap.png</code></td>
+<td>~85 KB</td>
+<td>Heatmap of projected % improvement per ZIP × resource type combination</td>
+</tr>
+<tr>
+<td><code>reports/figures/category_healthcare_view.png</code></td>
+<td>~51 KB</td>
+<td>Healthcare supply gap + poverty rate for all Jacksonville ZIPs</td>
+</tr>
+<tr>
+<td><code>reports/figures/category_food_access_view.png</code></td>
+<td>~52 KB</td>
+<td>Food access supply gap + poverty rate for all Jacksonville ZIPs</td>
+</tr>
+<tr>
+<td><code>reports/figures/category_parks_view.png</code></td>
+<td>~50 KB</td>
+<td>Parks supply gap + poverty rate for all Jacksonville ZIPs</td>
+</tr>
+<tr>
+<td><code>reports/figures/category_insurance_view.png</code></td>
+<td>~51 KB</td>
+<td>Insurance coverage gap + poverty rate for all Jacksonville ZIPs</td>
+</tr>
+<tr>
+<td><code>reports/outputs/resource_desert_map.html</code></td>
+<td>~5.2 MB</td>
+<td>Interactive Folium choropleth — hover ZIPs to see Desert Score + rank</td>
+</tr>
+</tbody>
+</table>
+<h3 id="static-presentation">Static Presentation<a class="headerlink" href="#static-presentation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs/project_presentation.html</code></td>
+<td>~613 KB</td>
+<td>Fully self-contained HTML — all 7 charts base64-inlined, all data embedded; opens directly from the filesystem without Flask</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Generated from codebase analysis — 2026-03-28</em></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Experiments with AI Code Assistant
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

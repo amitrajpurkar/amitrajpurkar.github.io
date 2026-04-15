@@ -581,9 +581,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#journal-date-2026-02-11" class="md-nav__link">
+  <a href="#journal-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Journal date: 2026-02-11
+      Journal Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-that-i-dont-forget" class="md-nav__link">
+    <span class="md-ellipsis">
+      so that i dont forget
     </span>
   </a>
   
@@ -2855,6 +2864,8 @@
       
         
       
+        
+      
     
     
     
@@ -2985,6 +2996,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08rdessert/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    experiment 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3039,19 +3073,19 @@ noting down the intent of this documentation:</p>
 <td>AGENT profile</td>
 <td>Behavior &amp; discipline</td>
 <td>AI agent</td>
-<td>Long-lived</td>
-</tr>
-<tr>
-<td>Specifications ( <del>SpecKit</del> )</td>
-<td>Intent &amp; correctness</td>
-<td>Features / systems</td>
-<td>Per change</td>
+<td>Reusable, long-lived</td>
 </tr>
 <tr>
 <td>Skills</td>
 <td>Capability &amp; execution</td>
 <td>Tasks</td>
-<td>Reusable</td>
+<td>Reusable, long-lived</td>
+</tr>
+<tr>
+<td>Specifications ( <del>SpecKit</del> )</td>
+<td>Intent &amp; correctness</td>
+<td>Features / systems</td>
+<td>Per change/ project</td>
 </tr>
 </tbody>
 </table>
@@ -3233,6 +3267,12 @@ noting down the intent of this documentation:</p>
 <td>better scoping and execution with SpecKit, multiple revisions</td>
 </tr>
 <tr>
+<td><a href="08rdessert/architecture/">Resource Dessert</a></td>
+<td>experiment from a data hackathon <strong>AGENTS.md; SpecKit; skills</strong></td>
+<td>✅</td>
+<td>better scoping and execution with SpecKit, multiple revisions</td>
+</tr>
+<tr>
 <td>...</td>
 <td>keep practising more...</td>
 <td>xx</td>
@@ -3271,7 +3311,7 @@ noting down the intent of this documentation:</p>
 </ul>
 <h2 id="agents-constitution-rules">AGENTS, CONSTITUTION, RULES<a class="headerlink" href="#agents-constitution-rules" title="Permanent link">&para;</a></h2>
 <ul>
-<li>these are overarchiing rules that the AI Agent must follow</li>
+<li>the overarching rules that AI Agent must follow -- this defines the behavior of the AI Agent, its profile, what role is it playing.</li>
 <li>these can be re-used across multiple projects</li>
 <li>We can have one AGENTS.md file for each type of Software Developer: Java, Python, Java-Springboot, React, etc.</li>
 <li>You can hand craft an AGENTS.md or even have AI-Agent generate it for you.</li>
@@ -3299,20 +3339,8 @@ noting down the intent of this documentation:</p>
 <li>AI Coding Agents like Windsurf/ Cascade refer to Skills as Workflows.</li>
 <li>install Skills under different scopes: Global (<user-home>/.claude/skills/...), Project</li>
 </ul>
-<h2 id="journal-date-2026-02-11">Journal date: 2026-02-11<a class="headerlink" href="#journal-date-2026-02-11" title="Permanent link">&para;</a></h2>
+<h2 id="journal-notes">Journal Notes<a class="headerlink" href="#journal-notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>IMPORTANT: <ul>
-<li>understanding how AGENT.md, SpecKit, Skills work is important</li>
-<li>use readily-available developer-workflow:: Speckit, RIPER-5, Claude has one as well<ul>
-<li>Speckit: Constitution → Specify → Clarify → Plan → Task → Analyze → Implement → Review</li>
-<li>RIPER-5: Research → Innovate → Plan → Execute → Review</li>
-<li>Claude: xxx...</li>
-<li>HumanLayer: Research → Plan → Implement → Validate</li>
-</ul>
-</li>
-<li>add to your toolbox a library of AGENTS.md, Skills</li>
-</ul>
-</li>
 <li>DEVELOPER WATCHOUTS:<ul>
 <li>Non-negotiable: AI amplifies skills; it does not replace Developer’s skills</li>
 <li>Architectural thinking: decompose the system, decide which component, library or design pattern suites best for the problem at hand; think about transaction boundaries; interface contracts</li>
@@ -3336,6 +3364,15 @@ noting down the intent of this documentation:</p>
 </li>
 </ul>
 <hr />
+<h2 id="so-that-i-dont-forget">so that i dont forget<a class="headerlink" href="#so-that-i-dont-forget" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>navigate<span class="w"> </span>to<span class="w"> </span>&lt;working-dir&gt;<span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># once i update documentation, i have a few helpers</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./doc.sh<span class="w"> </span>--help
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>./doc.sh<span class="w"> </span>serve<span class="w">      </span><span class="c1"># recompile mkdocs, verify locally</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>./doc.sh<span class="w"> </span>publish<span class="w">    </span><span class="c1"># publish to main.</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>./doc.sh<span class="w"> </span>commit<span class="w">     </span><span class="c1"># push to remote.</span>
+</span></code></pre></div>
 <hr />
 <h2 id="for-further-research">for further research<a class="headerlink" href="#for-further-research" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3344,9 +3381,9 @@ noting down the intent of this documentation:</p>
 <li><a href="https://github.com/anthropics/claude-code.git">Claude plugins</a></li>
 </ul>
 <hr />
-<p><strong>Last Updated:</strong> February 15, 2026<br />
+<p><strong>Last Updated:</strong> April 15, 2026<br />
 <strong>Project:</strong> Journey with AI Code Assistant<br />
-<strong>Version:</strong> 1.0.2</p>
+<strong>Version:</strong> 1.0.3</p>
 
 
 
